@@ -1,0 +1,41 @@
+
+.form__login_create_container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+
+.form__login_create_container .inputs__general {
+    background-color: #fff;
+    border: 1.5px solid #dee6ee;
+    border-radius: 10px;
+}
+
+
+
+.form__login_create_container > .row__one {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+
+    .form__login_create_container {
+        grid-template-columns: repeat(2, 1fr);
+        margin: 20px 0;
+    }
+    
+}
+
+@media screen and (max-width: 500px) {
+    .form__login_create_container {
+        grid-template-columns: 1fr;
+        margin: 20px 0;
+    }
+    
+}
