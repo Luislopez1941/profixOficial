@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Card from '../general/Card';
 import Slider from "react-slick";
-import { Search, Check, CreditCard } from 'lucide-react';
+import { Search, Check, CreditCard, MapPinHouse } from 'lucide-react';
 
 
 interface Skill {
@@ -63,11 +63,17 @@ const Main = () => {
             <div className='row__four'>
                 <div>
                     <div className='left'>
-                        Recuerda que puedes calificar a profesionales para reconocer su trabajo
+                        <p>Recuerda que puedes calificar a profesionales para reconocer su trabajo</p>
                     </div>
 
                     <div className='right'>
-                        Una buena calificación habla de un buen servicio
+                        <div className='icon-left'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" stroke-linejoin="round" className="lucide lucide-map-pin-house"><path d="M15 22a1 1 0 0 1-1-1v-4a1 1 0 0 1 .445-.832l3-2a1 1 0 0 1 1.11 0l3 2A1 1 0 0 1 22 17v4a1 1 0 0 1-1 1z"/><path d="M18 10a8 8 0 0 0-16 0c0 4.993 5.539 10.193 7.399 11.799a1 1 0 0 0 .601.2"/><path d="M18 22v-3"/><circle cx="10" cy="10" r="3"/></svg>
+                        </div>
+                        <div className='content-right'>
+                            <p className='title'>Servicios a Domicilio</p>
+                            <p className='text-content'>Servicios de excelente calidad a la puerta de tu domicilio</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -150,6 +156,17 @@ const Main = () => {
                         <li>Precios transparentes y competitivos</li>
                     </ul>
                     <button className='learn-more'>Aprende más</button>
+                </div>
+            </div>
+            <div className='row__six'>
+                <div className=''>
+                    <div className='img__services'>
+
+                    </div>
+                    <div className='content'>
+                        <p className='title'>Mejores servcios domesticos</p>
+                        <p>Garantizamos que todos nuestros serviisos sean de calidad</p>
+                    </div>
                 </div>
             </div>
         </div>

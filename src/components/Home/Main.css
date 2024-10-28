@@ -188,12 +188,48 @@
 }
 
 .main > .row__four > div > .right {
-
-    background-color: var(--primary-color);
+    display: grid;
+    grid-template-columns: 20% 80%;
+    column-gap: 10px;
     border-radius: 10px;
-    color: #fff;
     padding: 10px;
+    color: var(--black-color-4);
+    background-color: #fff;
+    border: 1px solid #e1e5ea;
+    box-shadow: 0px 0px 52px 5px rgba(0, 0, 0, 0.1);
 }
+
+.main > .row__four > div > .right > .icon-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  border-radius: 10px;
+  background-color: #3498db2d;
+}
+
+.main > .row__four > div > .right > .icon-left > svg  {
+  color: #3498db;
+}
+
+.main > .row__four > div > .right > .content-right {
+  display: block;
+}
+
+.main > .row__four > div > .right > .content-right p {
+  margin: 0;
+}
+
+.main > .row__four > div > .right > .content-right > .title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.main > .row__four > div > .right > .content-right > .text-content {
+  font-size: .8rem;
+  font-weight: 400;
+}
+
 
 .how-it-works {
     max-width: 800px;
@@ -339,6 +375,38 @@
   .learn-more:hover {
     background-color: #f8f9fa;
     color: #2980b9;
+  }
+
+
+  .main > .row__six {
+    width: 90%;
+    margin: 70px auto;
+  }
+
+  
+  .main > .row__six > div {
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+  }
+
+  .img__services {
+    background-image: url('https://images.pexels.com/photos/5081415/pexels-photo-5081415.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    height: 250px;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+  }
+
+  .main > .row__six > div > .content {
+    padding: 10px;
+  }
+
+  .main > .row__six > div > .content > .title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--black-color-5);
   }
 
   @media (min-width: 640px) {

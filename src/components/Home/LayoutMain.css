@@ -107,7 +107,7 @@
 @media screen and (max-width: 768px) {
 
     .layout {
-        height: 100vh;
+        height: auto;
         display: flex;
         align-items: start;
         justify-content: center;
