@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Card from '../general/Card';
 import Slider from "react-slick";
-import { Search, Check, CreditCard, MapPinHouse } from 'lucide-react';
+import { Search, Check, CreditCard, ChevronDown } from 'lucide-react';
 
 
 interface Skill {
@@ -18,8 +18,7 @@ interface Item {
     image: string;
     fullname: string;
     skills: Skill[];
-    starts: number[]; // Asegúrate de que esto sea el tipo correcto
-    // name: string; // Elimina esta línea si no es necesaria
+    starts: number[];
 }
 
 const settings = {
@@ -167,6 +166,27 @@ const Main = () => {
                         <p className='title'>Mejores servcios domesticos</p>
                         <p>Garantizamos que todos nuestros serviisos sean de calidad</p>
                     </div>
+                </div>
+            </div>
+            <div className='row__seven'>
+                <div>
+                    <p>Preguntas frecuentes</p>
+                </div>
+                <div className='item'>
+                    <p>¿Por qué debería contratar a un freelancer?</p>
+                    <ChevronDown absoluteStrokeWidth />
+                </div>
+                <div className='item'>
+                    <p>¿Cómo sé que voy a recibir el trabajo por el cual pagué?</p>
+                    <ChevronDown absoluteStrokeWidth />
+                </div>
+                <div className='item'>
+                    <p>¿A quién debo dirigirme si tengo problemas con un pedido o con un freelancer?</p>
+                    <ChevronDown absoluteStrokeWidth />
+                </div>
+                <div className='item'>
+                    <p>¿También puedo trabajar con freelancers de habla español?</p>
+                    <ChevronDown absoluteStrokeWidth />
                 </div>
             </div>
         </div>
