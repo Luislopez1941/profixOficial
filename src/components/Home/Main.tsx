@@ -115,7 +115,6 @@ const Main = () => {
                 </div> */}
                <div className="service-professionals">
                     <div className="container">
-                        <h2>Servicios Profesionales</h2>
                         <div className="services-grid">
                         {services.map((service, index) => (
                             <ServiceCard key={index} name={service.name} Icon={service.Icon} />

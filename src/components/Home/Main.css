@@ -215,6 +215,7 @@
 .main > .row__four > div > .right > .content-right {
   display: block;
   color: #fff;
+  padding: 10px 15px 10px 10px;
 }
 
 .main > .row__four > div > .right > .content-right p {
