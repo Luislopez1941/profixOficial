@@ -33,7 +33,7 @@ const Header = () => {
           </button>
         </div>
         <div>
-          <h2 className='title'>ProFix</h2>
+          <h2 className='title'>Proservicios</h2>
         </div>
         <div className={`nav__hero ${toggle ? 'activo' : ''}`}>
           <div className='nav__hero_container'>

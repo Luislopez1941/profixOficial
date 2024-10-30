@@ -79,6 +79,13 @@
     src: url('./fonts/Poppins/Poppins-Bold.ttf') format('truetype');
     font-weight: 700; /* Bold */
   }
+
+  @font-face {
+    font-family: 'Poppins';
+    src: url('./fonts/Poppins/Poppins-ExtraBold.ttf') format('truetype');
+    font-weight: 800; /* Bold */
+  }
+  
   
   
   

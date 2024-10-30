@@ -8,6 +8,8 @@ import "slick-carousel/slick/slick-theme.css";
 import Card from '../general/Card';
 import Slider from "react-slick";
 import { Search, Check, CreditCard, ChevronDown } from 'lucide-react';
+import { Wrench, Zap, Key, Sparkles, Scissors, PaintBucket, Hammer, Smartphone } from "lucide-react";
+
 
 
 interface Skill {
@@ -56,6 +58,31 @@ const settings = {
     ]
 };
 
+const services = [
+    { name: "Plomero", Icon: Wrench },
+    { name: "Electricista", Icon: Zap },
+    { name: "Cerrajero", Icon: Key },
+    { name: "Limpiador", Icon: Sparkles },
+    { name: "Jardinero", Icon: Scissors },
+    { name: "Pintor", Icon: PaintBucket },
+    { name: "Albañil", Icon: Hammer },
+    { name: "Técnico en electrodomésticos", Icon: Smartphone },
+  ];
+  
+  interface ServiceCardProps {
+    name: string;
+    Icon: React.ElementType;
+  }
+
+const ServiceCard: React.FC<ServiceCardProps> = ({ name, Icon }) => (
+    <div className="service-card">
+      <div className="icon-container">
+        <Icon className="icon" />
+      </div>
+      <p>{name}</p>
+    </div>
+  );
+
 const Main = () => {
     return (
         <div className='main'>
@@ -77,10 +104,7 @@ const Main = () => {
                 </div>
             </div>
             <div className='row__one'>
-                <div className='title'>
-                    <p>Los trabajadores con mejores calificaciones</p>
-                </div>
-                <div className="slider-container">
+                {/* <div className="slider-container">
                     <Slider {...settings}>
                         {items.map((item: Item, index: number) => (
                             <div className='item' key={index}>
@@ -88,7 +112,17 @@ const Main = () => {
                             </div>
                         ))}
                     </Slider>
-                </div>
+                </div> */}
+               <div className="service-professionals">
+                    <div className="container">
+                        <h2>Servicios Profesionales</h2>
+                        <div className="services-grid">
+                        {services.map((service, index) => (
+                            <ServiceCard key={index} name={service.name} Icon={service.Icon} />
+                        ))}
+                        </div>
+                    </div>
+                    </div>
                 <div className='best__services'>
 
                 </div>
@@ -146,15 +180,10 @@ const Main = () => {
             </div>
             <div className='row__five'>
                 <div className='additional__information'>
-                    <h2>Información Adicional</h2>
-                    <p>ProFix está comprometido a proporcionar servicios domésticos de alta calidad y confiables. Nuestro objetivo es hacer que tu vida sea más fácil y cómoda.</p>
-                    <ul>
-                        <li>Profesionales verificados y de confianza</li>
-                        <li>Servicios disponibles 24/7</li>
-                        <li>Garantía de satisfacción del cliente</li>
-                        <li>Precios transparentes y competitivos</li>
-                    </ul>
-                    <button className='learn-more'>Aprende más</button>
+                    <p>Profesionales comprometidos en alta calidad y confiables.</p>
+                    <div>
+                        <button className='learn-more'>Aprende más</button>
+                    </div>
                 </div>
             </div>
             <div className='row__six'>
