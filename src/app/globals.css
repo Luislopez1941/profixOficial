@@ -187,6 +187,19 @@
     border-radius: 3px;
     text-indent: 15px;
   }
+
+  .textarea__general {
+    width: 100%;
+    background-color: var(--input-color);
+    margin-top: 10px;
+    border: none;
+    outline: none;
+    padding: 10px 0;
+    border-radius: 3px;
+    text-indent: 15px;
+    display: block;
+    color: var(--text-color);
+  }
   
   .inputs__general_icons {
     display: flex;
@@ -379,6 +392,7 @@
   
   
   .select__container .options {
+    display: block;
     height: 0;
     transition: opacity 300ms;
     margin-top: 10px;

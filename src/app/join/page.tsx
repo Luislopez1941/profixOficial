@@ -3,11 +3,12 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation'
 import './page.css'
+import APIs from '@/services/APIS';
 
 interface FormData {
     firstName: string;
-    lastName: string;
-    phoneNumber: string;
+    firstSurname: string;
+    phone: string;
     email: string;
     password: string;
 }
@@ -15,8 +16,8 @@ interface FormData {
 const Page: React.FC = () => {
     const [formData, setFormData] = useState<FormData>({
         firstName: '',
-        lastName: '',
-        phoneNumber: '',
+        firstSurname: '',
+        phone: '',
         email: '',
         password: '',
     });
@@ -31,11 +32,18 @@ const Page: React.FC = () => {
         }));
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(formData);
 
-        router.push('/join/success');
+        try {
+            let result = APIs.customerRegistration(formData)
+            router.push('/join/success');
+        } catch (error) {
+
+        }
+     
+
+      
     };
 
     return (
@@ -73,9 +81,9 @@ const Page: React.FC = () => {
                                         <input
                                             className='inputs__general'
                                             type="text"
-                                            name="lastName"
+                                            name="firstSurname"
                                             placeholder="Last Name"
-                                            value={formData.lastName}
+                                            value={formData.firstSurname}
                                             onChange={handleChange}
                                             autoComplete="given-name"
                                         />
@@ -86,9 +94,9 @@ const Page: React.FC = () => {
                                         <input
                                             className='inputs__general'
                                             type="text"
-                                            name="phoneNumber"
+                                            name="phone"
                                             placeholder="Phone Number"
-                                            value={formData.phoneNumber}
+                                            value={formData.phone}
                                             onChange={handleChange}
                                             autoComplete="given-name"
                                         />

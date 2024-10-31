@@ -29,7 +29,6 @@ interface UserStore {
 // Crea el store de Zustand
 const useUserStore = create<UserStore>((set) => {
   const initialUser = getCookie(UserKey) || EmptyUserState; // Obtiene el usuario inicial de las cookies
-  console.log('Cookie recuperada:', initialUser);
   return {
     user: initialUser as UserInfo, // Asegúrate de que sea de tipo UserInfo
     getUser: (payload) => set(() => {
