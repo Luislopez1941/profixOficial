@@ -44,14 +44,15 @@ type Skills = Skill[];
 interface UpdateUserData {
     id: number,
     type: string,
-    profile: string;
+    profilePhoto: string;
+    background: string;
     description?: string;
     skills: Skills; 
 }
 
 interface FormData {
-    firstName: string;
-    firstSurname: string;
+    first_name: string;
+    first_surname: string;
     phone: string;
     email: string;
     password: string;
@@ -73,9 +74,12 @@ const APIs = {
         return ConfigurationAPIs.put(path, data);
     },
     
-
-
     createUsers: async (data: UserData) => {
+        const path = 'users_registration';
+        return ConfigurationAPIs.post(path, data);
+    },
+
+    getUsers: async (data: UserData) => {
         const path = 'users_registration';
         return ConfigurationAPIs.post(path, data);
     },

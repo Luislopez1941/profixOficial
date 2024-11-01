@@ -18,9 +18,10 @@ interface Item {
 // Define la interfaz de los props que se pasarán al componente Card
 interface CardProps {
     item: Item;
+    route: string
 }
 
-const Card: React.FC<CardProps> = ({ item }) => {
+const Card: React.FC<CardProps> = ({ item, route }) => {
     return (
         <div className='card'>
             <div className='card__container'>
@@ -66,7 +67,7 @@ const Card: React.FC<CardProps> = ({ item }) => {
                         ))}
                     </div>
                     <div className='btn'>
-                        <Link href='/profile'>Ver perfil</Link>
+                        <Link href={route}>Ver perfil</Link>
                     </div>
                 </div>
             </div>

@@ -1,25 +1,34 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, {useState } from 'react'
 import './FormLogin.css'
 import { storeLogin } from '@/zustand/Login'
-import APIs from '@/services/APIS'
-// import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
+import toast, { Toaster } from 'react-hot-toast';
+import useUserStore from '@/zustand/UserStore'
+import { getCookie } from '@/utils/cookie.utility';
+
 
 interface FormData {
     email: string;
     password: string;
 }
 
-const FormLogin: React.FC = () => {
-    const setFormStatus = storeLogin(state => state.setFormStatus)
+export const UserKey = 'user';
 
+const FormLogin: React.FC = () => {
+    const router = useRouter()
+    const setFormStatus = storeLogin(state => state.setFormStatus)
+    const { updateUser } = useUserStore();
                
 
     const [formData, setFormData] = useState<FormData>({
         email: '',
         password: '',
     });
+
+
+
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -31,13 +40,35 @@ const FormLogin: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        await fetch('/api/', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-        });
+        try {
+            let response: any = await fetch('/api/', { method: 'POST', headers: { 'Content-Type': 'application/json',}, body: JSON.stringify(formData),});
+            if (!response.ok) {
+                throw new Error('Error en la respuesta de la API');
+            }
+    
+            // Convertir la respuesta a JSON
+            const result = await response.json();
+            const initialUser = getCookie(UserKey)
+            updateUser(initialUser)
+            console.log(initialUser)
+         
+            if(result.status == 'success') {
+                toast.success(result.message)
+                
+                
+                setTimeout(() => {
+                    router.push('/')
+                }, 500);
+            } 
+            if(result.status == 'warning') {
+                return toast.error(result.message);
+            }
+          
+        } catch (error) {
+            
+        }
+
+
 
         console.log(formData);
 
@@ -56,7 +87,7 @@ const FormLogin: React.FC = () => {
                     <p>Ingresa para encontrar expertos confiables que llevarán tus proyectos al siguiente nivel.</p>
                 </div>
             </div>
-
+            <div><Toaster/></div>
             <div className='form__login_container'>
                 <div className='container__inputs'>
                     <div className='inputs__general_icons'>

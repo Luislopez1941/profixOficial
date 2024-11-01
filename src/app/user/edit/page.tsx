@@ -38,7 +38,8 @@ type SkillsArray = Skill[]; // Define un tipo que es un arreglo de habilidades
 interface UpdateUserData {
   id: any; // ID del usuario
   type: string; // Tipo de usuario
-  profile: string; // Ruta de la imagen de perfil
+  profilePhoto: string;
+  background: string; // Ruta de la imagen de perfil
   description?: string; // Descripción del usuario (opcional)
   skills: SkillsArray; // Arreglo de habilidades
 }
@@ -107,7 +108,8 @@ const EditProfile = () => {
     let data: UpdateUserData = {
         id: userGlobal.id,
         type: userGlobal.typeUser,
-        profile: selectedImage,
+        profilePhoto: selectedImage,
+        background: '',
         description: description,
         skills: skills 
     };
@@ -119,7 +121,7 @@ const EditProfile = () => {
 
   return (
     <div className="user__profile">
-      <div className='backgorund-profile'></div>
+      <div className='backgorund-profile' style={{ backgroundImage: selectedImage ? `url(${selectedImage})` : 'none'}} ></div>
       <div className="cols__container">
         <div className="left__col">
           <div className="img__container">

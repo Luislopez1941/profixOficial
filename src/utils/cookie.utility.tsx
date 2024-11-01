@@ -10,7 +10,6 @@ interface CookieData {
 export const persistCookie = (key: string, value: CookieData) => {
   const serializedValue = JSON.stringify(value);
   Cookies.set(key, serializedValue, { expires: 7, path: '/' });
-  console.log('Cookie guardada:', { key, serializedValue });
 };
 export const getCookie = (key: string) => {
   const cookie = Cookies.get(key);

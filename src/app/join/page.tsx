@@ -6,8 +6,8 @@ import './page.css'
 import APIs from '@/services/APIS';
 
 interface FormData {
-    firstName: string;
-    firstSurname: string;
+    first_name: string;
+    first_surname: string;
     phone: string;
     email: string;
     password: string;
@@ -15,8 +15,8 @@ interface FormData {
 
 const Page: React.FC = () => {
     const [formData, setFormData] = useState<FormData>({
-        firstName: '',
-        firstSurname: '',
+        first_name: '',
+        first_surname: '',
         phone: '',
         email: '',
         password: '',
@@ -70,9 +70,9 @@ const Page: React.FC = () => {
                                         <input
                                             className='inputs__general'
                                             type="text"
-                                            name="firstName"
+                                            name="first_name"
                                             placeholder="First Name"
-                                            value={formData.firstName}
+                                            value={formData.first_name}
                                             onChange={handleChange}
                                             autoComplete="given-name"
                                         />
@@ -81,9 +81,9 @@ const Page: React.FC = () => {
                                         <input
                                             className='inputs__general'
                                             type="text"
-                                            name="firstSurname"
+                                            name="first_surname"
                                             placeholder="Last Name"
-                                            value={formData.firstSurname}
+                                            value={formData.first_surname}
                                             onChange={handleChange}
                                             autoComplete="given-name"
                                         />

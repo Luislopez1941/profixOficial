@@ -2,42 +2,38 @@
 
 
 import React, { useEffect, useState } from 'react'
-import './Profile.css'
-import { User } from 'lucide-react';
-import Link from 'next/link';
 import APIs from '@/services/APIS';
 import useUserStore from '@/zustand/UserStore';
-
+import { User } from 'lucide-react';
+import Link from 'next/link';
+import './Profile.css'
 
 interface UserInfo {
-  id: number;
-  name: string;
-  email: string;
-  typeUser: string;
-  token: string;
- 
-};
+    id: number;
+    name: string;
+    email: string;
+    typeUser: string;
+    token: string;
+   
+  };
+  
+  interface UserData {
+    firstName: string;
+    firstSurname: string;
+    typeUser: string;
+    phone: string;
+    email: string;
+    password: string;
+    profile: string;
+    description: string
+  }
+  
 
-interface UserData {
-  firstName: string;
-  firstSurname: string;
-  background: string;
-  profilePhoto: string;
-  typeUser: string;
-  skills: []
-  phone: string;
-  email: string;
-  password: string;
-
-  description: string
-}
-
-
-const Profile = () => {
-  const userState = useUserStore(state => state.user);
-  const userGlobal: UserInfo = userState;
-
+const page = () => {
+    const userState = useUserStore(state => state.user);
+    const userGlobal: UserInfo = userState;
   const [user, setUser] = useState<UserData>()
+  
 
   const getUser = async () => {
     try {
@@ -53,8 +49,6 @@ const Profile = () => {
     getUser()
  
   }, [])
-
-
 
 
   return (
@@ -77,13 +71,9 @@ const Profile = () => {
             <div className='name__conatiner'>
               <p className='name'>{user?.firstName} {user?.firstSurname}</p>
             </div>
-            <div className='btn__edit_container'>
-              <Link href='/user/edit' className='btn__general-purple'>Editar perfil</Link>
-            </div>
             <div className='skills__contaiiner'>
-              {user?.skills?.map((x: any) => (
-                <p>{x.name}</p>
-              ))}
+              <p>Plomero</p>
+              <p>Electicista</p>
             </div>
             <div className='description'>
                 <p>
@@ -137,4 +127,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default page

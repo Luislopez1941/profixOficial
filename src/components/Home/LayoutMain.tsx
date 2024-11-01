@@ -118,7 +118,7 @@ const LayoutMain = () => {
                             </div>
                         </div>
                         <div className='btn-search'>
-                            <Link href='/workers' className='btn'>
+                            <Link href='/workers/' className='btn'>
                                 Buscar
                                 <Search strokeWidth={1.75} />
                             </Link>
