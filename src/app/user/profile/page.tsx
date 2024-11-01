@@ -63,8 +63,8 @@ const Profile = () => {
       <div className="cols__container">
         <div className="left__col">
           <div className="img__container">
-            {user?.profile ?
-              <div className='user-true' style={{ backgroundImage: `url(${user?.profile})` }}>
+            {user?.profilePhoto ?
+              <div className='user-true' style={{ backgroundImage: `url(${user?.profilePhoto})` }}>
               </div>
               :
               <div className='user-false'>
