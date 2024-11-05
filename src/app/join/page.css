@@ -138,14 +138,57 @@
 @media screen and (max-width: 768px) {
 
     .join__container .right {
+        display: block;
+        justify-content: center;
+   
+    }
+
+    .join__container .right > div {
+        display: flex;
+        height: 100%;
+        position: relative;
+   
+    }
+
+    .form__join-finally .container__btn .btn__create-join {
+        background-color: var(--primary-color);
         display: flex;
         justify-content: center;
-        height: 100%;
+        padding: 10px 10px;
+        width: 100%;
+        margin: 0 auto;
+        border-radius: 10px;
+        color: #fff;
+        border: none;
+        cursor: pointer;
     }
+    
 
     .form__join {
         /* width: 100%; */
+        margin: auto;
+    }
+
+    .form__join-finally {
+        margin: auto;
+    }
+
+    .form__join-finally > form > div {
+        margin: 20px 0;
+    }
+    .btn-back {
+        background-color: var(--primary-color);
+        position: absolute;
+        top: 20px;
+        display: flex;
+        justify-content: center;
+        padding: 10px 10px;
+        width: 40%;
         margin: 0 auto;
+        border-radius: 10px;
+        color: #fff;
+        border: none;
+        cursor: pointer;
     }
     
 
@@ -168,7 +211,7 @@
         display: none;
     }
 
-    .form__join>.form__join_container {
+    .form__join > .form__join_container {
         padding: 0;
         border-radius: 10px;
         display: grid;

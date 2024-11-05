@@ -169,12 +169,14 @@ const Page: React.FC = () => {
                 </div>
                 <div className='right'>
                     <AnimatePresence>
+                        <div>
                         {next === 0 ? (
-                            <motion.div
+                            <motion.div 
                                 key="form"
                                 initial={{opacity: 0 }}
                                 animate={{opacity: 1 }}
-                                transition={{ ease: "easeInOut", duration: 1 }}
+                                // exit={{ opacity: 0 }} 
+                                transition={{ ease: "linear", duration: 1.5 }}
                                 className='form__join'
                             >
                                 <div className='titles'>
@@ -218,9 +220,10 @@ const Page: React.FC = () => {
                                 key="location"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ ease: "easeInOut", duration: 1 }}
+                                transition={{ ease: "linear", duration: 1.5 }}
                                 className={`form__join-finally`}
                             >
+                                <div className='btn-back' onClick={() => setNext(0)}>Regresar</div>
                                 <p className='title'>Ubicacion</p>
                                 <p>Seleciona tu localidad para prestar tus servcios como profecional</p>
                                 <form onSubmit={handleSubmit}>
@@ -244,7 +247,7 @@ const Page: React.FC = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className='select__container'>
+                                    <div className='select__container my-4'>
                                         <div className='select-btn__general'>
                                             <div className={`select-btn ${selectCity ? 'active' : ''}`} onClick={openSelectCity}>
                                                 <MapPin strokeWidth={1.5} />
@@ -291,6 +294,7 @@ const Page: React.FC = () => {
                              
                             </motion.div>
                         )}
+                        </div>
                     </AnimatePresence>
                 </div>
             </div>
