@@ -107,6 +107,34 @@
     text-align: center;
 }
 
+.form__join-finally {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.form__join-finally > .title {
+    font-size: 2rem;
+    color: var(--black-color-5);
+}
+
+.form__join-finally .container__btn {
+
+}
+
+.form__join-finally .container__btn .btn__create-join {
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    padding: 10px 10px;
+    width: 40%;
+    margin: 0 auto;
+    border-radius: 10px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+
 @media screen and (max-width: 768px) {
 
     .join__container .right {
@@ -211,3 +239,4 @@
     
     
 }
+

@@ -54,7 +54,7 @@ const Header = () => {
                   </div>
                 </div>
                 <div className='sidebar__profile-name'>
-                <p>Luis Lopez</p>
+                  <p>Luis Lopez</p>
                 </div>
                 <div className='sidebar__profile-label'>
                   <p>Seguidos</p>

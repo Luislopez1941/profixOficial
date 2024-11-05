@@ -1,46 +1,65 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './LayoutMain.css';
 import Link from 'next/link';
 import { Search, MapPin, Navigation } from 'lucide-react';
+import APIs from '@/services/APIS';
 
 interface State {
     id: number;
     name: string;
-}
-
-interface City {
+  }
+  
+  interface City {
     id: number;
     name: string;
-}
+    id_state: number; // si las ciudades tienen una relación con un estado
+  }
+  
+  interface Municipality {
+    id: number;
+    name: string;
+    id_city: number; // si los municipios tienen una relación con una ciudad
+  }
 
 const LayoutMain = () => {
     const [selectState, setSelectState] = useState<boolean>(false);
-    const [selectedState, setSelectedState] = useState<number | null>(null); // Specify the type
+    const [selectedState, setSelectedState] = useState<number | null>(null);
 
-    const state: State[] = [
-        {
-            id: 1,
-            name: 'Quintana Roo',
-        },
-    ];
+    const [states, setStates] = useState<State[]>([])
+    const [cities, setCities] = useState<City[]>([])
+    const [municipality, setMunicipality] = useState<Municipality[]>([])
 
-    const citys: City[] = [
-        {
-            id: 1,
-            name: 'Cancun',
-        },
-    ];
+
+    const fetch = async () => {
+        try {
+        let resultStates = (await APIs.getStates()) as State[];
+        console.log(resultStates)
+        setStates(resultStates)
+        } catch (error) {
+          
+        }
+    }
+
+    useEffect(() => {
+        fetch()
+    }, [])
+
+   
+
 
     const openSelectStore = () => {
         setSelectState(!selectState);
     };
 
-    const handleCompaniesChange = (state: State) => { // Specify the type
+    const handleCompaniesChange = async (state: State) => {
         setSelectedState(state.id);
+        let result = (await APIs.getCities(state.id)) as City[];
+        setCities(result);
         setSelectState(false);
     };
+
 
     const [selectCity, setSelectCity] = useState<boolean>(false);
     const [selectedCity, setSelectedCity] = useState<number | null>(null); // Specify the type
@@ -49,10 +68,26 @@ const LayoutMain = () => {
         setSelectCity(!selectCity);
     };
 
-    const handleCityChange = (city: City) => { // Specify the type
+    const handleCityChange = async (city: City) => { // Specify the type
         setSelectedCity(city.id);
+        let result = (await APIs.getMunicipalities(city.id)) as Municipality[];
+        setMunicipality(result)
         setSelectCity(false);
     };
+
+    const [selectMunicipality, setSelectMunicipality] = useState<boolean>(false);
+    const [selectedMunicipality, setSelectedMunicipality] = useState<number | null>(null);
+
+    const openSelectMunicipality = () => {
+        setSelectMunicipality(!selectMunicipality);
+    };
+
+    const handleMunicipalityChange = async (municipality: Municipality) => {
+        setSelectedMunicipality(municipality.id);
+        setSelectMunicipality(false);
+    };
+
+
 
     return (
         <div className='layout'>
@@ -82,13 +117,13 @@ const LayoutMain = () => {
                                 <div className={`select-btn ${selectState ? 'active' : ''}`} onClick={openSelectStore}>
                                 <MapPin strokeWidth={1.5} />
                                     <div>
-                                        <p>{selectedState ? state.find((s) => s.id === selectedState)?.name : 'Selecciona'}</p>
+                                        <p>{selectedState ? states.find((s) => s.id === selectedState)?.name : 'Selecciona'}</p>
                                         <svg className='chevron__down' fill='#6c6c6e' xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" /></svg>
                                     </div>
                                 </div>
                                 <div className={`content ${selectState ? 'active' : ''}`}>
                                     <ul className={`options ${selectState ? 'active' : ''}`} style={{ opacity: selectState ? '1' : '0' }}>
-                                        {state?.map((state) => (
+                                        {states?.map((state) => (
                                             <li key={state.id} onClick={() => handleCompaniesChange(state)}>
                                                 {state.name}
                                             </li>
@@ -102,15 +137,35 @@ const LayoutMain = () => {
                                 <div className={`select-btn ${selectCity ? 'active' : ''}`} onClick={openSelectCity}>
                                 <MapPin strokeWidth={1.5} />
                                     <div>
-                                        <p>{selectedCity ? citys.find((s) => s.id === selectedCity)?.name : 'Selecciona'}</p>
+                                        <p>{selectedCity ? cities.find((s) => s.id === selectedCity)?.name : 'Ciudad'}</p>
                                         <svg className='chevron__down' fill='#6c6c6e' xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" /></svg>
                                     </div>
                                 </div>
                                 <div className={`content ${selectCity ? 'active' : ''}`}>
                                     <ul className={`options ${selectCity ? 'active' : ''}`} style={{ opacity: selectCity ? '1' : '0' }}>
-                                        {citys?.map((city) => (
+                                        {cities?.map((city) => (
                                             <li key={city.id} onClick={() => handleCityChange(city)}>
                                                 {city.name}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='select__container'>
+                            <div className='select-btn__general'>
+                                <div className={`select-btn ${selectMunicipality ? 'active' : ''}`} onClick={openSelectMunicipality}>
+                                <MapPin strokeWidth={1.5} />
+                                    <div>
+                                        <p>{selectedMunicipality ? municipality?.find((s) => s.id === selectedMunicipality)?.name : 'Municipio'}</p>
+                                        <svg className='chevron__down' fill='#6c6c6e' xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" /></svg>
+                                    </div>
+                                </div>
+                                <div className={`content ${selectMunicipality ? 'active' : ''}`}>
+                                    <ul className={`options ${selectMunicipality ? 'active' : ''}`} style={{ opacity: selectMunicipality ? '1' : '0' }}>
+                                        {municipality?.map((municipality) => (
+                                            <li key={municipality.id} onClick={() => handleMunicipalityChange(municipality)}>
+                                                {municipality.name}
                                             </li>
                                         ))}
                                     </ul>

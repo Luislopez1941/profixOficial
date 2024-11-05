@@ -56,7 +56,12 @@ interface FormData {
     phone: string;
     email: string;
     password: string;
+    id_state: number | null;
+    id_city: number | null;
+    id_municipality: number | null;
 }
+
+
 
 const APIs = {
     login: async (data: LoginData) => {
@@ -90,8 +95,21 @@ const APIs = {
         return ConfigurationAPIs.post(path, data);
     },
 
+    
+    getStates: async () => {
+        const path = 'get_localities';
+        return ConfigurationAPIs.get(path);
+    },
 
+    getCities: async (id_state: number) => {
+        const path = `get_cities/${id_state}`;
+        return ConfigurationAPIs.get(path);
+    },
 
+    getMunicipalities: async (id_city: number) => {
+        const path = `get_municipalities/${id_city}`;
+        return ConfigurationAPIs.get(path);
+    }
     
 
     
