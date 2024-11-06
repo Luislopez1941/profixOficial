@@ -7,6 +7,8 @@ import userImg from '../../../assets/img/user.jpeg'
 import { ArrowUpFromLine } from 'lucide-react';
 import APIs from '@/services/APIS'
 import useUserStore from '@/zustand/UserStore'
+import { Toaster, toast } from 'sonner'
+import { useRouter } from 'next/navigation'
 
 const services = [
   { id: 1, name: 'Plomero' },
@@ -49,7 +51,7 @@ interface UserInfo {
   email: string;
   typeUser: string;
   token: string;
- 
+
 };
 
 const EditProfile = () => {
@@ -83,46 +85,80 @@ const EditProfile = () => {
 
   const user = ''
 
-  const [selectedImage, setSelectedImage] = useState<string>('');
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const MAX_IMAGE_SIZE = 5 * 1024 * 1024; // 5MB
 
-  // Función para manejar el cambio de archivo
+  const [selectedImage, setSelectedImage] = useState<string>('');
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
+
     if (file) {
+      // Validar tipo de imagen
+      if (!file.type.startsWith("image/")) {
+        toast.error("Archivo no permitido. Por favor, selecciona una imagen.");
+        setSelectedImage(''); // Restablecer la imagen seleccionada
+        return;
+      }
+
+      // Validar tamaño de la imagen
+      if (file.size > MAX_IMAGE_SIZE) {
+        toast.warning("La imagen es demasiado grande. El tamaño máximo permitido es 5MB.");
+        setSelectedImage(''); // Restablecer la imagen seleccionada
+        return;
+      }
+
       const reader = new FileReader();
       reader.onloadend = () => {
-        // `reader.result` contiene la imagen en Base64
-        setSelectedImage(reader.result as string);
+        setSelectedImage(reader.result as string); // Convertir la imagen a Base64
       };
-      reader.readAsDataURL(file); // Esto convierte la imagen a Base64
+      reader.readAsDataURL(file); // Convierte la imagen a Base64
     }
   };
 
+  const router = useRouter();
   const handleDivClick = () => {
     fileInputRef.current?.click();
   };
 
   const update = async () => {
+    // Crear el objeto de datos
     let data: UpdateUserData = {
-        id: userGlobal.id,
-        type: userGlobal.typeUser,
-        profilePhoto: selectedImage,
-        background: '',
-        description: description,
-        skills: skills 
+      id: userGlobal.id,
+      type: userGlobal.typeUser,
+      profilePhoto: selectedImage ? selectedImage : '', // Asegúrate de que `selectedImage` es Base64
+      background: '', // Si tienes fondo, reemplaza esta cadena vacía con el valor adecuado
+      description: description,
+      skills: skills
     };
 
-    await APIs.updateUser(data);
-};
+    try {
+      // Llamar a la API para actualizar el usuario
+      await APIs.updateUser(data);
 
-console.log(userGlobal)
+      // Notificar éxito
+      toast.success('Usuario actualizado exitosamente');
+
+      // Redirigir después de 2 segundos
+      setTimeout(() => {
+        router.push('/user/profile');
+      }, 2000);
+
+    } catch (error) {
+      // Manejo de errores: mostrar el error
+      console.error('Error al actualizar el usuario:', error);
+      toast.error('Hubo un problema al actualizar tu perfil. Intenta de nuevo.');
+    }
+  };
+
+  console.log(userGlobal)
 
 
 
   return (
     <div className="user__profile">
-      <div className='backgorund-profile' style={{ backgroundImage: selectedImage ? `url(${selectedImage})` : 'none'}} ></div>
+      <Toaster richColors position="top-right" />
+      <div className='backgorund-profile' style={{ backgroundImage: selectedImage ? `url(${selectedImage})` : 'none' }} ></div>
       <div className="cols__container">
         <div className="left__col">
           <div className="img__container">
@@ -161,7 +197,7 @@ console.log(userGlobal)
                 <div className='select__container'>
                   <div className='select-btn__general'>
                     <div className={`select-btn ${selectServices ? 'active' : ''}`} onClick={openSelectServices}>
-      
+
                       <div>
                         <p>{selectedServices ? selectedServices.name : 'Selecciona'}</p>
                         <svg className='chevron__down' fill='#6c6c6e' xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">
