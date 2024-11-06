@@ -47,8 +47,7 @@ export interface Customer {
 
 const Page = () => {
 
-  const storedData = JSON.parse(localStorage.getItem('filter') || '{}');
-
+  const storedData = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('filter') || '{}') : {};
 
   const router = useRouter();
   const { data } = useStore(storeGlobal);  // Accediendo al estado global
