@@ -20,10 +20,10 @@ export async function POST(req: NextRequest) {
 
     // Asegúrate de que la estructura sea la correcta
     const dataCookies = {
-      id: data.data?._id,
+      id: data.data?.id,
       name: data.data?.firstName || '', // Asegúrate de manejar el caso en que no exista
       email: data.data?.email || '',
-      typeUser: data.data?.typeUser || '',
+      typeUser: data.data?.type_user || '',
       token: data.token,
     };
 

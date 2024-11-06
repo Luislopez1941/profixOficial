@@ -288,7 +288,7 @@ const Page: React.FC = () => {
                                         </div>
                                     </div>
                                     <div className='container__btn'>
-                                        <Link className='btn__create-join' href="/join">Finalizar</Link>
+                                        <button className='btn__create-join' type="submit">Finalizar</button>
                                     </div>
                                 </form>
                              

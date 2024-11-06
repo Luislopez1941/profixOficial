@@ -4,7 +4,6 @@ import React, { useRef, useState, ChangeEvent } from 'react'
 import './EditProfile.css'
 import Image from 'next/image'
 import userImg from '../../../assets/img/user.jpeg'
-import Link from 'next/link';
 import { ArrowUpFromLine } from 'lucide-react';
 import APIs from '@/services/APIS'
 import useUserStore from '@/zustand/UserStore'
@@ -116,6 +115,8 @@ const EditProfile = () => {
 
     await APIs.updateUser(data);
 };
+
+console.log(userGlobal)
 
 
 

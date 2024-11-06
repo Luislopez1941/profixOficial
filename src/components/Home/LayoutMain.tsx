@@ -2,9 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 import './LayoutMain.css';
-import Link from 'next/link';
 import { Search, MapPin, Navigation } from 'lucide-react';
 import APIs from '@/services/APIS';
+import { useRouter } from 'next/navigation'
+import { motion, AnimatePresence } from 'framer-motion';
+import { useStore } from 'zustand';
+import { storeGlobal } from '@/zustand/GlobalVariations';
+
 
 interface State {
     id: number;
@@ -26,7 +30,9 @@ interface State {
 const LayoutMain = () => {
     const [selectState, setSelectState] = useState<boolean>(false);
     const [selectedState, setSelectedState] = useState<number | null>(null);
-
+    const router = useRouter();
+    const setData = storeGlobal(state => state.setData)
+    const { data } = useStore(storeGlobal);
     const [states, setStates] = useState<State[]>([])
     const [cities, setCities] = useState<City[]>([])
     const [municipality, setMunicipality] = useState<Municipality[]>([])
@@ -87,15 +93,39 @@ const LayoutMain = () => {
         setSelectMunicipality(false);
     };
 
+    const [typeServive, setTypeService] = useState<string>('')
+
+   
+
+    const searchUser = () => {
+        let data = {
+            type: 'get-user',
+            type_service: typeServive,
+            id_state: selectedState,
+            id_city: selectedCity,
+            id_municipality: selectedMunicipality
+        };
+    
+        setData(data);
+        localStorage.setItem('filter', JSON.stringify(data));  // Aquí se usa JSON.stringify
+        router.push('/workers');
+    };
+    
 
 
     return (
+        <AnimatePresence>
+        <motion.div
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className='layout'
+        >
         <div className='layout'>
             <div className='layout__container'>
                 <div className='text__search'>
                     <div>
                         <p className='text__main'>Donde buscar un servicio es Fácil y Seguro</p>
-        
                     </div>
                     <div className='warning'>
                         <p>
@@ -109,7 +139,7 @@ const LayoutMain = () => {
                         <div>
                             <div className='inputs__general_icons'>
                             <Navigation strokeWidth={1.5} />
-                                <input className='inputs__generic' type="text" placeholder='Buscar tipo de servicio' />
+                                <input className='inputs__generic' type="text" placeholder='Buscar tipo de servicio' value={typeServive} onChange={(e) => setTypeService(e.target.value)} />
                             </div>
                         </div>
                         <div className='select__container'>
@@ -173,16 +203,18 @@ const LayoutMain = () => {
                             </div>
                         </div>
                         <div className='btn-search'>
-                            <Link href='/workers/' className='btn'>
+                            <button className='btn' onClick={searchUser}>
                                 Buscar
                                 <Search strokeWidth={1.75} />
-                            </Link>
+                            </button>
 
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        </motion.div>
+        </AnimatePresence>
     );
 };
 

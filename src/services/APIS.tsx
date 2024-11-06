@@ -95,6 +95,10 @@ const APIs = {
         return ConfigurationAPIs.post(path, data);
     },
 
+    getCustomers: async (data: FormData) => {
+        const path = 'customers_get';
+        return ConfigurationAPIs.post(path, data);
+    },
     
     getStates: async () => {
         const path = 'get_localities';
