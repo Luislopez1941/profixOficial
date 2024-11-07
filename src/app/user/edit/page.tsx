@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useRef, useState, ChangeEvent } from 'react'
+import React, { useRef, useState, ChangeEvent, useEffect } from 'react'
 import './EditProfile.css'
 import Image from 'next/image'
 import userImg from '../../../assets/img/user.jpeg'
@@ -54,13 +54,52 @@ interface UserInfo {
 
 };
 
+interface UserData {
+  firstName: string;
+  firstSurname: string;
+  background: string;
+  profilePhoto: string;
+  typeUser: string;
+  skills: []
+  phone: string;
+  email: string;
+  password: string;
+
+  description: string
+}
+
+
 const EditProfile = () => {
   const [skills, setSkills] = useState<Skills[]>([]);
 
   const userState = useUserStore(state => state.user);
   const userGlobal: UserInfo = userState;
 
+  const [user, setUser] = useState<UserData>()
+
   const [description, setDescription] = useState<string>()
+
+  const getUser = async () => {
+    try {
+      let result = await APIs.getUser(userGlobal) as UserData;
+
+      setUser(result);
+      setDescription(result.description)
+      setSelectedImage(result.profilePhoto)
+      setSkills(result.skills)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getUser()
+  
+  }, [])
+
+  console.log(user)
+
+
 
   const [selectedServices, setSelectedServices] = useState<Skills | undefined>(undefined);
   const [selectServices, setSelectServices] = useState<boolean>(false);
@@ -73,17 +112,22 @@ const EditProfile = () => {
   };
 
   const handleAddSkill = () => {
-    if (selectedServices && !skills.some((s) => s.id === selectedServices.id)) {
-      setSkills([...skills, selectedServices]);
-      setSelectedServices(undefined);
+    if (selectedServices) {  // Aseguramos que selectedServices no sea undefined
+      let find = skills.find((x: {id: number}) => x.id == selectedServices.id);
+      if (!find) {
+        setSkills([...skills, selectedServices]);  // Solo si selectedServices está definido
+        setSelectedServices(undefined);
+      }
+    } else {
+      console.log('selectedServices is undefined');
     }
   };
+  
 
   const handleRemoveSkill = (index: number) => {
     setSkills(skills.filter((_, i) => i !== index));
   };
 
-  const user = ''
 
   const MAX_IMAGE_SIZE = 5 * 1024 * 1024; // 5MB
 
@@ -126,7 +170,7 @@ const EditProfile = () => {
     let data: UpdateUserData = {
       id: userGlobal.id,
       type: userGlobal.typeUser,
-      profilePhoto: selectedImage ? selectedImage : '', // Asegúrate de que `selectedImage` es Base64
+      profilePhoto: selectedImage, // Asegúrate de que `selectedImage` es Base64
       background: '', // Si tienes fondo, reemplaza esta cadena vacía con el valor adecuado
       description: description,
       skills: skills
@@ -162,11 +206,7 @@ const EditProfile = () => {
       <div className="cols__container">
         <div className="left__col">
           <div className="img__container">
-            {user ?
-              <div className='urser-true'>
-                <Image src={userImg} alt="Anna Smith" width={150} height={150} />
-              </div>
-              :
+          
               <div className="user-false" onClick={handleDivClick} style={{
                 cursor: 'pointer',
                 backgroundImage: selectedImage ? `url(${selectedImage})` : 'none',
@@ -175,7 +215,7 @@ const EditProfile = () => {
               }}>
                 <ArrowUpFromLine strokeWidth={1.25} />
               </div>
-            }
+          
             <input
               type="file"
               accept="image/*"
@@ -220,14 +260,15 @@ const EditProfile = () => {
                   Agregar
                 </button>
               </div>
-              <div className="skills-list">
-                {skills.map((skill: Skills, index: number) => (
+              <div className="skills-add">
+                {skills?.map((skill: Skills, index: number) => (
                   <div key={index} className="skill-item">
                     <span>{skill.name}</span>
                     <button onClick={() => handleRemoveSkill(index)} className="remove-skill-button">X</button>
                   </div>
                 ))}
               </div>
+           
             </div>
             <div className='description'>
               <textarea value={description} onChange={(e) => setDescription(e.target.value)} className='textarea__general' placeholder='Descripción'></textarea>

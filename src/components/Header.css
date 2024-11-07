@@ -36,6 +36,7 @@
     justify-content: space-between;
     width: 400px;
     display: none;
+  
   }
   
   .nav__items {
@@ -223,9 +224,31 @@
     display: none;
   }
 
+
+
+  /*================================ SIDEBAR LOGIN FALSE======================================== */
+
   .btn__container {
     
   }
+
+  .hero__items {
+    margin-top: 10px;
+  }
+
+  .hero__items > p {
+    padding: 10px;
+    margin: 20px 0;
+    cursor: pointer;
+  }
+
+  .hero__items > p:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-radius: 5px;
+  }
+
+
   
   /* Responsive styles */
   @media screen and (max-width: 768px) {
@@ -254,11 +277,13 @@
       left: 0;
     }
 
-    .nav__hero.activo .toggle {
+    .nav__hero .toggle {
         position: absolute;
         top: 10px;
         right: 10px;
     }
+
+  
     
   
     .nav__hero_container {
@@ -266,6 +291,10 @@
       display: grid;
       height: 100%;
       grid-template-rows: auto auto 1fr auto;
+    }
+
+    .nav__hero_container .btn__general-purple {
+      border-radius: 5px;
     }
   
     .nav__items {
