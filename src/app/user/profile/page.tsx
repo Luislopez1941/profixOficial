@@ -19,8 +19,10 @@ interface UserInfo {
 };
 
 interface UserData {
-  firstName: string;
-  firstSurname: string;
+  first_name: string;
+  second_name: String;
+  first_surname: string;
+  second_last_name: string;
   background: string;
   profilePhoto: string;
   typeUser: string;
@@ -71,11 +73,11 @@ const Profile = () => {
                 <User strokeWidth={1.25} />
               </div>
             }
-            <span></span>
+          
           </div>
           <div className='profile-information__container'>
             <div className='name__conatiner'>
-              <p className='name'>{user?.firstName} {user?.firstSurname}</p>
+              <p className='name'>{user?.first_name} {user?.second_name} {user?.first_surname} {user?.second_last_name}</p>
             </div>
             <div className='btn__edit_container'>
               <Link href='/user/edit' className='btn__general-purple'>Editar perfil</Link>
@@ -92,45 +94,22 @@ const Profile = () => {
             </div>
             <ul className="about">
               <li>
+                <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="icon icon-tabler icons-tabler-filled icon-tabler-star"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z" /></svg>
+                (7.8)
+                </div>
                 Calificaciones
               </li>
               <li>
-              <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="currentColor"  className="icon icon-tabler icons-tabler-filled icon-tabler-briefcase-2"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 2a3 3 0 0 1 3 3v1h2a3 3 0 0 1 3 3v9a3 3 0 0 1 -3 3h-14a3 3 0 0 1 -3 -3v-9a3 3 0 0 1 3 -3h2v-1a3 3 0 0 1 3 -3zm0 2h-4a1 1 0 0 0 -1 1v1h6v-1a1 1 0 0 0 -1 -1" /></svg>
+              <svg  xmlns="http://www.w3.org/2000/svg"  width="28"  height="28"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-briefcase-2"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9z" /><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2" /></svg>
                 Trabajos
                 </li>
               <li>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="icon icon-tabler icons-tabler-filled icon-tabler-message"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 3a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-4.724l-4.762 2.857a1 1 0 0 1 -1.508 -.743l-.006 -.114v-2h-1a4 4 0 0 1 -3.995 -3.8l-.005 -.2v-8a4 4 0 0 1 4 -4zm-4 9h-6a1 1 0 0 0 0 2h6a1 1 0 0 0 0 -2m2 -4h-8a1 1 0 1 0 0 2h8a1 1 0 0 0 0 -2" /></svg>
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="28"  height="28"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-brand-whatsapp"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" /><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" /></svg>
                 Enviar mensaje
               </li>
             </ul>
-            <div></div>
-
-            <div className="content">
-              <p>
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam
-                erat volutpat. Morbi imperdiet, mauris ac auctor dictum, nisl
-                ligula egestas nulla.
-              </p>
-
-              <ul>
-                <li><i className="fab fa-twitter"></i></li>
-                <i className="fab fa-pinterest"></i>
-                <i className="fab fa-facebook"></i>
-                <i className="fab fa-dribbble"></i>
-              </ul>
-            </div>
           </div>
-        </div>
-        <div className="right__col">
-          <nav>
-            <ul>
-              <li><a href="">Trabajos</a></li>
-              <li><a href="">Fotos</a></li>
-            </ul>
-            <button>Follow</button>
-          </nav>
-
         </div>
       </div>
     </div>

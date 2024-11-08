@@ -61,12 +61,7 @@ const Page = () => {
     try {
       setActive(true)
       let result = await APIs.getCustomers(data == null ? storedData : data);
-
       setWorkers(result);
-
-
-
-
     } catch (error) {
       console.error('Error fetching workers:', error);
     } finally {
@@ -79,9 +74,7 @@ const Page = () => {
   };
 
   useEffect(() => {
-
       if (data && data.type === 'get-user') {
-      
         fetchData();
       } else {
         fetchData();
@@ -116,7 +109,7 @@ const Page = () => {
               <div className='row__two'>
                 <input className='inputs__general' type="text" placeholder='Buscar servicios' />
                 <div className='search'>
-                  <Search style={{ width: '1rem', height: '1rem' }} />
+                  <Search style={{ width: '1.4rem', height: '1.4rem' }} />
                 </div>
               </div>
               <div className='row__three'>

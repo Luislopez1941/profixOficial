@@ -72,6 +72,11 @@
     margin-left: 10px;
 }
 
+.workers .hero__workers > .row__two .search svg {
+    color: var(--white-color) !important;
+}
+
+
 
 .workers .hero__workers > .row__three .btn__filter {
     display: flex;

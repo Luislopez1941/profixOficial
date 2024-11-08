@@ -1,3 +1,7 @@
+.profile-information__container > .row__one {
+  display: flex;
+}
+
 .skills__container {
     display: flex;
     flex-direction: column;

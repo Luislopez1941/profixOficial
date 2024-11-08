@@ -2,12 +2,10 @@ import React from 'react';
 import './styles/Card.css';
 import Link from 'next/link';
 
-// Define la interfaz para los elementos Skill
+
 interface Skill {
     name: string;
 }
-
-// Define la interfaz para el objeto 'item'
 interface Item {
     id: number;
     first_name: string;
@@ -28,21 +26,15 @@ interface Item {
     id_state?: number; 
     id_city?: number; 
     id_municipality?: number; 
-  } // Esto representa las estrellas, cada número sería una estrella
+  } 
 
-// Define la interfaz de los props que se pasarán al componente Card
 interface CardProps {
     item: Item;
     route: string
 }
 
-// customer.interface.ts
-
-
 
 const Card: React.FC<CardProps> = ({ item, route }) => {
-
-
 
     return (
         <div className='card'>
@@ -57,6 +49,13 @@ const Card: React.FC<CardProps> = ({ item, route }) => {
                     </div>
                     <div>
                         <p className='reviews'>Me gusta ofrecer servicios de calidad</p>
+                    </div>
+                    <div className='skills'>
+                        {item.skills?.map((skill, skillIndex) => (
+                            <p className={skill.name} key={skillIndex}>
+                                {skill.name}
+                            </p>
+                        ))}
                     </div>
                     <div className='qualifications'>
                         <div className='score'>
@@ -75,13 +74,7 @@ const Card: React.FC<CardProps> = ({ item, route }) => {
                         </div>
                     </div>
 
-                    <div className='skills'>
-                        {item.skills?.map((skill, skillIndex) => (
-                            <p className={skill.name} key={skillIndex}>
-                                {skill.name}
-                            </p>
-                        ))}
-                    </div>
+                   
                     <div className='btn'>
                         <Link href={route}>Ver perfil</Link>
                     </div>

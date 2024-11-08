@@ -61,9 +61,10 @@ const LayoutMain = () => {
 
     const handleCompaniesChange = async (state: State) => {
         setSelectedState(state.id);
+        setSelectState(false);
         let result = (await APIs.getCities(state.id)) as City[];
         setCities(result);
-        setSelectState(false);
+       
     };
 
 
@@ -76,9 +77,10 @@ const LayoutMain = () => {
 
     const handleCityChange = async (city: City) => { // Specify the type
         setSelectedCity(city.id);
+        setSelectCity(false);
         let result = (await APIs.getMunicipalities(city.id)) as Municipality[];
         setMunicipality(result)
-        setSelectCity(false);
+   
     };
 
     const [selectMunicipality, setSelectMunicipality] = useState<boolean>(false);

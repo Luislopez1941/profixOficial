@@ -128,10 +128,14 @@ a {
 }
 
 
-
+.user__profile .btn__edit_container  {
+  display: flex;
+  
+}
 
 .user__profile .btn__edit_container > .btn__general-purple {
   display: flex;
+  border-radius: 5px;
   width: 100%;
 }
 
