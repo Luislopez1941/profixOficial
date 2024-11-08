@@ -73,7 +73,6 @@ const Profile = () => {
                 <User strokeWidth={1.25} />
               </div>
             }
-          
           </div>
           <div className='profile-information__container'>
             <div className='name__conatiner'>

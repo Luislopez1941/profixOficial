@@ -19,8 +19,11 @@ interface UserInfo {
 };
 
 interface UserData {
-  firstName: string;
-  firstSurname: string;
+  first_name: string;
+  second_name: String;
+  first_surname: string;
+  second_last_name: string;
+  profilePhoto: string;
   typeUser: string;
   phone: string;
   email: string;
@@ -78,7 +81,7 @@ const page = () => {
               </div>
               <div className='profile-information__container'>
                 <div className='name__conatiner'>
-                  <p className='name'>{user?.firstName} {user?.firstSurname}</p>
+                  <p className='name'>{user?.first_name} {user?.second_name} {user?.first_surname} {user?.second_last_name}</p>
                 </div>
                 <div className='skills__contaiiner'>
                   <p>Plomero</p>
