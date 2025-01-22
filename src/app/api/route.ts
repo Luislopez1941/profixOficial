@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
   try {
-    const response = await fetch('https://back-proservicios-1.onrender.com/api/general_login', {
+    const response = await fetch('http://localhost:4000/api/general_login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -18,10 +18,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: data.message }, { status: response.status });
     }
 
-    // Asegúrate de que la estructura sea la correcta
+    
     const dataCookies = {
       id: data.data?.id,
-      name: data.data?.firstName || '', // Asegúrate de manejar el caso en que no exista
+      name: data.data?.firstName || '',
       email: data.data?.email || '',
       typeUser: data.data?.type_user || '',
       token: data.token,

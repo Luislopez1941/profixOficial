@@ -101,19 +101,21 @@ const APIs = {
     },
     
     getStates: async () => {
-        const path = 'get_localities';
+        const path = 'get_states';
         return ConfigurationAPIs.get(path);
     },
 
-    getCities: async (id_state: number) => {
-        const path = `get_cities/${id_state}`;
+    getMunicipalities: async (id_state: number) => {
+        const path = `get_municipalities/${id_state}`;
         return ConfigurationAPIs.get(path);
     },
 
-    getMunicipalities: async (id_city: number) => {
-        const path = `get_municipalities/${id_city}`;
+    getLocalities: async (id_municipality: number) => {
+        const path = `get_localities/${id_municipality}`;
         return ConfigurationAPIs.get(path);
-    }
+    },
+
+  
     
 
     

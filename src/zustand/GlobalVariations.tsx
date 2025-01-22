@@ -5,7 +5,7 @@ interface StoreState {
         type: string;
         type_service: string;
         id_state: number | null;
-        id_city: number | null;
+        id_locality: number | null;
         id_municipality: number | null;
     } | null;  // Data can be an object or null if not set
     setData: (x: StoreState['data']) => void;  // Accept the object type for setData

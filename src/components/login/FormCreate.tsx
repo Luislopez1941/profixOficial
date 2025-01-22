@@ -57,7 +57,7 @@ const FormCreate: React.FC = () => {
                             className='inputs__general'
                             type="text"
                             name="firstName"
-                            placeholder="First Name"
+                            placeholder="Primer nombre"
                             value={formData.firstName}
                             onChange={handleChange}
                             autoComplete="given-name"
@@ -68,7 +68,7 @@ const FormCreate: React.FC = () => {
                             className='inputs__general'
                             type="text"
                             name="lastName"
-                            placeholder="Last Name"
+                            placeholder="Primer apellido"
                             value={formData.lastName}
                             onChange={handleChange}
                             autoComplete="given-name"
@@ -81,7 +81,7 @@ const FormCreate: React.FC = () => {
                         className='inputs__general'
                         type="text"
                         name="phoneNumber"
-                        placeholder="Phone Number"
+                        placeholder="Numero telefonico"
                         value={formData.phone}
                         onChange={handleChange}
                         autoComplete="given-name"
@@ -93,7 +93,7 @@ const FormCreate: React.FC = () => {
                         className='inputs__general'
                         type="email"
                         name="email"
-                        placeholder="Email"
+                        placeholder="Correo electronico"
                         value={formData.email}
                         onChange={handleChange}
                         autoComplete="given-name"
@@ -105,7 +105,7 @@ const FormCreate: React.FC = () => {
                         className='inputs__general'
                         type="password"
                         name="password"
-                        placeholder="Password"
+                        placeholder="Contraseña"
                         value={formData.password}
                         onChange={handleChange}
                         autoComplete="given-name"

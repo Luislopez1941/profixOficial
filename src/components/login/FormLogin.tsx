@@ -69,14 +69,8 @@ const FormLogin: React.FC = () => {
         }
 
 
-
-        console.log(formData);
-
-
     };
 
-
-    
     
 
     return (
@@ -116,13 +110,13 @@ const FormLogin: React.FC = () => {
                         autoComplete="given-name"
                     />
                     </div>
-                </div>
+                </div>   
             </div>
             <div className='btn'>
                 <button className='btn__create' onClick={() => setFormStatus(false)} >Iniciar sesion</button>
             </div>
             <div className='btn__change'>
-                <button className='btn' onClick={() => setFormStatus(true)}>Crear cuenta</button>
+                <button className='btn' type='button' onClick={() => setFormStatus(true)}>Crear cuenta</button>
             </div>
         </form>
     )

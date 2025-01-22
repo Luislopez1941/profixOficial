@@ -8,8 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Card from '../general/Card';
 import Slider from "react-slick";
 import { Search, Check, CreditCard, ChevronDown } from 'lucide-react';
-import { Wrench, Zap, Key, Sparkles, Scissors, PaintBucket, Hammer, Smartphone } from "lucide-react";
-
+import { PlomeroIcon, ElectricistaIcon, LocksmithIcon, CleanIcon, GardenerIcon, PainterIcon, StylistIcon, CarpenterIcon, ConstructionWorkerIcon } from './utils/icons';
 
 
 interface Skill {
@@ -17,10 +16,17 @@ interface Skill {
 }
 
 interface Item {
-    image: string;
-    fullname: string;
+    id?: number;
+    first_name?: string;
+    second_name?: string;
+    first_surname?: string;
+    second_last_name?: string;
+    profilePhoto: string;
     skills: Skill[];
     starts: number[];
+    email?: string;
+    password?: string;
+    phone?: string;
 }
 
 const settings = {
@@ -58,30 +64,32 @@ const settings = {
     ]
 };
 
+
 const services = [
-    { name: "Plomero", Icon: Wrench },
-    { name: "Electricista", Icon: Zap },
-    { name: "Cerrajero", Icon: Key },
-    { name: "Limpiador", Icon: Sparkles },
-    { name: "Jardinero", Icon: Scissors },
-    { name: "Pintor", Icon: PaintBucket },
-    { name: "Albañil", Icon: Hammer },
-    { name: "Técnico en electrodomésticos", Icon: Smartphone },
+    { name: "Plomero", Icon: PlomeroIcon },
+    { name: "Electricista", Icon: ElectricistaIcon },
+    { name: "Cerrajero", Icon: LocksmithIcon },
+    { name: "Limpiador", Icon: CleanIcon },
+    { name: "Jardinero", Icon: GardenerIcon },
+    { name: "Pintor", Icon: PainterIcon },
+    { name: "Albañil", Icon: ConstructionWorkerIcon },
+    { name: "Estilista", Icon: StylistIcon },
 ];
 
-interface ServiceCardProps {
+type ServiceCardProps = {
     name: string;
-    Icon: React.ElementType;
-}
+    Icon: React.ElementType; // Icon es un componente React
+};
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ name, Icon }) => (
     <div className="service-card">
         <div className="icon-container">
-            <Icon className="icon" />
+            <Icon /> {/* Renderiza el icono correctamente */}
         </div>
         <p>{name}</p>
     </div>
 );
+
 
 const Main = () => {
     return (
@@ -94,7 +102,7 @@ const Main = () => {
 
                     <div className='right'>
                         <div className='icon-left'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-map-pin-house"><path d="M15 22a1 1 0 0 1-1-1v-4a1 1 0 0 1 .445-.832l3-2a1 1 0 0 1 1.11 0l3 2A1 1 0 0 1 22 17v4a1 1 0 0 1-1 1z" /><path d="M18 10a8 8 0 0 0-16 0c0 4.993 5.539 10.193 7.399 11.799a1 1 0 0 0 .601.2" /><path d="M18 22v-3" /><circle cx="10" cy="10" r="3" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 -960 960 960" fill="currentColor"><path d="M754-81q-8 0-15-2.5T726-92L522-296q-6-6-8.5-13t-2.5-15q0-8 2.5-15t8.5-13l85-85q6-6 13-8.5t15-2.5q8 0 15 2.5t13 8.5l204 204q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13l-85 85q-6 6-13 8.5T754-81Zm-549 1q-8 0-15.5-3T176-92l-84-84q-6-6-9-13.5T80-205q0-8 3-15t9-13l212-212h85l34-34-165-165h-57L80-765l113-113 121 121v57l165 165 116-116-43-43 56-56H495l-28-28 142-142 28 28v113l56-56 142 142q17 17 26 38.5t9 45.5q0 24-9 46t-26 39l-85-85-56 56-42-42-207 207v84L233-92q-6 6-13 9t-15 3Z" /></svg>
                         </div>
                         <div className='content-right'>
                             <p className='title'>Servicios a Domicilio</p>
@@ -104,15 +112,15 @@ const Main = () => {
                 </div>
             </div>
             <div className='row__one'>
-                {/* <div className="slider-container">
+                <div className="slider-container">
                     <Slider {...settings}>
-                        {items.map((item: Item, index: number) => (
+                        {items.map((item: any, index: number) => (
                             <div className='item' key={index}>
-                                <Card item={item} />
+                                <Card item={item} route={'/workers/profile'} />
                             </div>
                         ))}
                     </Slider>
-                </div> */}
+                </div>
                 <div className="service-professionals">
                     <div className="container">
                         <div className="services-grid">

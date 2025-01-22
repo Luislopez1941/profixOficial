@@ -7,8 +7,8 @@ interface Skill {
     name: string;
 }
 interface Item {
-    id: number;
-    first_name: string;
+    id?: number;
+    first_name?: string;
     second_name?: string;
     first_surname: string;
     second_last_name?: string;
@@ -23,14 +23,14 @@ interface Item {
     birthdate?: string;
     dni?: string;
     type_user?: string;
-    id_state?: number; 
-    id_city?: number; 
-    id_municipality?: number; 
-  } 
+    id_state?: number;
+    id_city?: number;
+    id_municipality?: number;
+}
 
 interface CardProps {
     item: Item;
-    route: string
+    route: string;
 }
 
 
@@ -41,11 +41,11 @@ const Card: React.FC<CardProps> = ({ item, route }) => {
             <div className='card__container'>
                 <div
                     className='card__image'
-                    style={{ backgroundImage: `url(${item.profilePhoto})` }}
+                    style={{ backgroundImage: `url(${item?.profilePhoto})` }}
                 ></div>
                 <div className='card__content'>
                     <div>
-                        <p className='name'>{item.first_name} {item.first_surname}</p>
+                        <p className='name'>{item?.first_name} {item?.first_surname}</p>
                     </div>
                     <div>
                         <p className='reviews'>Me gusta ofrecer servicios de calidad</p>
@@ -74,7 +74,7 @@ const Card: React.FC<CardProps> = ({ item, route }) => {
                         </div>
                     </div>
 
-                   
+
                     <div className='btn'>
                         <Link href={route}>Ver perfil</Link>
                     </div>

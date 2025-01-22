@@ -21,10 +21,17 @@
 
 
 .login__container .right {
-    display: flex;
-    align-items: center;
-    height: 100%;
+ 
 }
+
+
+.login__container .right > .right__container {
+    display: block;
+}
+
+
+
+
 
 .form__login {
     width: 90%;

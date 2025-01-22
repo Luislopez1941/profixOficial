@@ -9,7 +9,7 @@ interface ApiResponse<T> {
 class ApiService {
   private axiosInstance: AxiosInstance;
 
-  constructor(baseURL: string = 'https://back-proservicios-1.onrender.com/api/') {
+  constructor(baseURL: string = 'http://localhost:4000/api/') {
     this.axiosInstance = axios.create({
       baseURL,
       headers: {

@@ -169,7 +169,7 @@
 
 .main > .row__four {
     width: 90%;
-    margin: 70px auto;
+    margin: 60px auto;
 }
 
 
@@ -181,7 +181,8 @@
 }
 
 .main > .row__four > div > .left {
-    background-color: #dfe2e3;
+    background-color: #ffffff;
+    border: 2px solid #f4f4f4;
     border-radius: 10px;
     color: var(--placeholder-color);
     padding: 10px;
@@ -194,9 +195,8 @@
     border-radius: 10px;
     padding: 10px;
     color: var(--black-color-4);
-    background-color: var(--primary-color);
-    border: 1px solid #e1e5ea;
-    box-shadow: 0px 0px 52px 5px rgba(0, 0, 0, 0.1);
+    background-color: hsla(211, 100%, 76%, 0.171);
+
 }
 
 .main > .row__four > div > .right > .icon-left {
@@ -209,12 +209,12 @@
 }
 
 .main > .row__four > div > .right > .icon-left > svg  {
-  color: #fff;
+    color: #3F7DC0;
 }
 
 .main > .row__four > div > .right > .content-right {
   display: block;
-  color: #fff;
+ 
   padding: 10px 15px 10px 10px;
 }
 
@@ -223,13 +223,14 @@
 }
 
 .main > .row__four > div > .right > .content-right > .title {
-  color: #fff;
+  color: #3F7DC0;
   font-size: 1rem;
   font-weight: 600;
 }
 
 .main > .row__four > div > .right > .content-right > .text-content {
-  color: #fff;
+  color: #3F7DC0;
+  margin-top: 5px;
   font-size: .8rem;
   font-weight: 400;
 }
@@ -428,14 +429,11 @@
 
 
 
-
-  
-h2 {
-  text-align: center;
-  color: #1f2937;
-  font-size: 2rem;
-  margin-bottom: 2rem;
+.service-professionals {
+  margin: 60px auto;
+  width: 90%;
 }
+  
 
 .services-grid {
   display: grid;
@@ -458,15 +456,19 @@ h2 {
 }
 
 .icon-container {
-  background-color: #e0f2fe;
-  width: 4rem;
-  height: 4rem;
+  background-color: #50aeec36;
+  width: 50px;
+  width: 50px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto 1rem;
   transition: background-color 0.3s ease-in-out;
+}
+
+.icon-container > svg {
+  color: #3F7DC0;
 }
 
 .service-card:hover .icon-container {
@@ -491,10 +493,6 @@ h2 {
 }
 
 @media (max-width: 768px) {
-  .container {
-      margin: 1rem;
-      padding: 1rem;
-  }
 
   .services-grid {
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -520,9 +518,9 @@ h2 {
 }
 
 @media (max-width: 480px) {
-  .services-grid {
+  /* .services-grid {
       grid-template-columns: 1fr 1fr;
-  }
+  } */
 }
 
 

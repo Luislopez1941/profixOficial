@@ -175,7 +175,6 @@ const Page: React.FC = () => {
                                 key="form"
                                 initial={{opacity: 0 }}
                                 animate={{opacity: 1 }}
-                                // exit={{ opacity: 0 }} 
                                 transition={{ ease: "linear", duration: 1.5 }}
                                 className='form__join'
                             >
@@ -187,33 +186,31 @@ const Page: React.FC = () => {
                                 </div>
                                 <div className='form__join_container'>
                                     <div className='row__one'>
-                                        <input className='inputs__general' type="text" name="first_name" placeholder="First Name" value={formData.first_name} onChange={handleChange} autoComplete="given-name" />
-                                        <input className='inputs__general' type="text" name="first_surname" placeholder="Last Name" value={formData.first_surname} onChange={handleChange} autoComplete="given-name" />
+                                        <input className='inputs__general' type="text" name="first_name" placeholder="Primer nombre" value={formData.first_name} onChange={handleChange} autoComplete="given-name" />
+                                        <input className='inputs__general' type="text" name="first_surname" placeholder="Primer apellido" value={formData.first_surname} onChange={handleChange} autoComplete="given-name" />
                                     </div>
                                     <div className='row__two'>
-                                        <input className='inputs__general' type="text" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleChange} autoComplete="given-name" />
-                                        <input className='inputs__general' type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} autoComplete="given-name" />
+                                        <input className='inputs__general' type="text" name="phone" placeholder="Numero telefonico" value={formData.phone} onChange={handleChange} autoComplete="given-name" />
+                                        <input className='inputs__general' type="email" name="email" placeholder="Correo electronico" value={formData.email} onChange={handleChange} autoComplete="given-name" />
                                     </div>
                                     <div className='row__three'>
-                                        <input className='inputs__general' type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} autoComplete="given-name" />
+                                        <input className='inputs__general' type="password" name="password" placeholder="Contraseña" value={formData.password} onChange={handleChange} autoComplete="given-name" />
                                     </div>
                                     <div className='btn'>
                                         <button className='btn__create' type="button" onClick={() => setNext(1)}>Crear cuenta</button>
                                     </div>
                                 </div>
-                                <div className='h-line'>
+                                {/* <div className='h-line'>
                                     <p>Iniciar sesión con</p>
-                                </div>
-                                <div className='logins'>
+                                </div> */}
+                                {/* <div className='logins'>
                                     <div>
-                                        {/* SVG de Google */}
                                         <p>Iniciar sesión con Google</p>
                                     </div>
                                     <div>
-                                        {/* SVG de Facebook */}
                                         <p>Iniciar sesión con Facebook</p>
                                     </div>
-                                </div>
+                                </div> */}
                             </motion.div>
                         ) : (
                             <motion.div
