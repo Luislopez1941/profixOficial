@@ -46,6 +46,8 @@
     border: none;
 }
 
+  
+
 
 .layout__container .search > .row__one .select__container .content{
     /* background-color: #f3f3f3; */
@@ -156,6 +158,7 @@
     }
     
 
+ 
     .search .inputs__general_icons {
         padding: 0;
         background-color: #fff;
@@ -176,11 +179,20 @@
     }
 
     .search .select-btn {
-        border: 1px solid #e1e5ea;
         background-color: #fff;
         padding: 0;
         color: var(--text-color-form);
     }
+
+    .layout__container .search .select__container .options li {
+        color: var(--text-color-form);
+      }
+
+      .layout__container .search .select__container .options li:hover, li.selected{
+        border-radius: 5px;
+        background-color: var(--primary-color);
+        color: #ffffff;
+        }
 
     .search .select-btn .chevron__down {
         fill: var(--text-color-form);

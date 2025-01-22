@@ -15,19 +15,6 @@ interface Skill {
     name: string;
 }
 
-interface Item {
-    id?: number;
-    first_name?: string;
-    second_name?: string;
-    first_surname?: string;
-    second_last_name?: string;
-    profilePhoto: string;
-    skills: Skill[];
-    starts: number[];
-    email?: string;
-    password?: string;
-    phone?: string;
-}
 
 const settings = {
     dots: true,
