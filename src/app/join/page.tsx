@@ -98,7 +98,7 @@ const Page: React.FC = () => {
             id_state: state.id
         }));
         try {
-            const result = await APIs.getCities(state.id) as City[];
+            const result = await APIs.getLocalities(state.id) as City[];
             setCities(result);
         } catch (error) {
             console.error("Error fetching cities:", error);
@@ -150,7 +150,7 @@ const Page: React.FC = () => {
             ...prevFormData,
             id_state: state.id
         }));
-        let result = (await APIs.getCities(state.id)) as City[];
+        let result = (await APIs.getLocalities(state.id)) as City[];
         setCities(result);
         setSelectState(false);
     };
