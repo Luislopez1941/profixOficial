@@ -434,15 +434,14 @@
 
   }
   .select__container .options li:hover, li.selected{
-  border-radius: 5px;
-  /* background: #f2f2f2; */
-  background-color: var(--primary-color);
-  color: #fff;
+    border-radius: 5px;
+    /* background: #f2f2f2; */
+    background-color: var(--primary-color);
+    color: #fff;
   }
   
   .select-btn p:focus{
     background-color: var(--background-hover-select);
-  
   }
   
   
