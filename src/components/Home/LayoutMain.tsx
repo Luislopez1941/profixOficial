@@ -125,7 +125,6 @@ const LayoutMain = () => {
                 initial={{ opacity: 1 }}
                 exit={{ opacity: 1 }}
                 transition={{ duration: 1 }}
-          
             >
                 <div className='layout'>
                     <div className='layout__container'>

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
   try {
-    const response = await fetch('https://back-proservicios-production.up.railway.app/api/general_login', {
+    const response = await fetch('https://back-proservicios-production.up.railway.app/api/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

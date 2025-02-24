@@ -9,7 +9,7 @@ import Card from '../general/Card';
 import Slider from "react-slick";
 import { Search, Check, CreditCard, ChevronDown } from 'lucide-react';
 import { PlomeroIcon, ElectricistaIcon, LocksmithIcon, CleanIcon, GardenerIcon, PainterIcon, StylistIcon, CarpenterIcon, ConstructionWorkerIcon } from './utils/icons';
-
+import LayoutMain from './LayoutMain';
 
 interface Skill {
     name: string;
@@ -80,7 +80,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ name, Icon }) => (
 
 const Main = () => {
     return (
+        
         <div className='main'>
+            <LayoutMain />
             <div className='row__four'>
                 <div>
                     <div className='left'>
@@ -127,6 +129,7 @@ const Main = () => {
                         <p>En nuestro sitio, te ofrecemos un mundo de posibilidades para todas tus necesidades.</p>
                     </div>
                     <div className='right'>
+                        <div className='content'>
                         <h2>¡Descubre la Excelencia en Servicios!</h2>
                         <p>En nuestro sitio, te ofrecemos un mundo de posibilidades para todas tus necesidades.</p>
                         <div>
@@ -134,6 +137,7 @@ const Main = () => {
                             Lo mejor de todo: cada servicio que ofrecemos es <strong>100% seguro</strong> y <strong>confiable</strong>.
 
                             ¡Tu satisfacción es nuestra prioridad!
+                        </div>
                         </div>
                     </div>
                 </div>

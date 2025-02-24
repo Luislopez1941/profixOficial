@@ -1,0 +1,76 @@
+.jobs {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.jobs .options {
+    display: flex;
+    overflow-x: auto; /* Habilita el scroll horizontal */
+    white-space: nowrap; /* Evita el salto de línea */
+    gap: 10px; /* Espacio entre elementos (ajústalo según necesites) */
+    padding: 10px; /* Añade un poco de padding para mejor apariencia */
+    overflow: auto;
+    -webkit-overflow-scrolling: touch; /* mejora el comportamiento del scroll en dispositivos táctiles de Apple */
+    scrollbar-width: none;
+}
+
+
+.jobs .options > div {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    padding: 5px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 5px;
+    
+}
+
+
+.jobs .options p {
+    margin-left: 10px;
+    
+}
+
+
+.jobs .search {
+    display: flex;
+    align-items: center;
+}
+
+.jobs .search .inputs__general {
+    border: 2px solid #f3f3f3;
+    margin-top: 0;
+    margin-right: 10px;
+    height: 40px;
+  }
+
+ .jobs .btn_search {
+    height: 40px;
+    width: 40px;
+    background-color: var(--primary-color);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+  }
+
+.cards__job {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    grid-template-rows: 400px;
+}
+
+.btn__create-job {
+    background-color: var(--primary-color);
+    padding: 10px 10px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--border-radius-general);
+    transition: all 400ms;
+    border-radius: 5px;
+}
+

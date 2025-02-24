@@ -201,17 +201,7 @@ const Page: React.FC = () => {
                                             <button className='btn__create' type="button" onClick={() => setNext(1)}>Crear cuenta</button>
                                         </div>
                                     </div>
-                                    {/* <div className='h-line'>
-                                    <p>Iniciar sesión con</p>
-                                </div> */}
-                                    {/* <div className='logins'>
-                                    <div>
-                                        <p>Iniciar sesión con Google</p>
-                                    </div>
-                                    <div>
-                                        <p>Iniciar sesión con Facebook</p>
-                                    </div>
-                                </div> */}
+                                
                                 </motion.div>
                             ) : (
                                 <motion.div

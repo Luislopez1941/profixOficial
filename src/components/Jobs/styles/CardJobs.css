@@ -1,0 +1,27 @@
+.card__jobs {
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+}
+
+.card__jobs > .image_jobs {
+    width: 300px;
+    height: 200px;
+    width: 100%;
+}
+
+.card__jobs .content .title {
+    font-size: 1.5rem;
+}
+
+.card__jobs .btn-send {
+    display: flex;
+    justify-content: end;
+}
+.card__jobs .btn-send > button {
+    padding: 5px;
+    border: none;
+    background-color: #3F7DC0;
+    color: #fff;
+    border-radius: 5px;
+}
+

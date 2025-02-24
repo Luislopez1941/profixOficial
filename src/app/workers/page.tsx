@@ -15,6 +15,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useStore } from 'zustand';
 import { storeGlobal } from "@/zustand/GlobalVariations";
 import APIs from "@/services/APIS";
+import Menu from '@/components/Menu'
 
 
 interface Skill {
@@ -102,6 +103,7 @@ const Page = () => {
 
         >
           <div className='workers'>
+           
             <Header />
             <header className='hero__workers'>
               <div className='row__one'>

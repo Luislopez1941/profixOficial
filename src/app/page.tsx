@@ -6,6 +6,7 @@ import LayoutMain from "@/components/Home/LayoutMain";
 import Main from "@/components/Home/Main";
 import Footer from "@/components/Footer";
 import { AnimatePresence, motion } from "framer-motion";
+import Menu from "@/components/Menu";
 
 export default function Home() {
    // Solo se vuelve a ejecutar si `data` cambia
@@ -19,9 +20,11 @@ export default function Home() {
           transition={{ duration: 1 }}
           className={styles.page}
         >
-         
+        <Menu />
+
         <Header />
-        <LayoutMain />
+
+        
         <Main />
         <Footer />
             

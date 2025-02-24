@@ -43,7 +43,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center">
                 <Phone size={18} className="mr-2" />
-                <a href="tel:+123456789">+1 (234) 567-89</a>
+                <a href="tel:+123456789">+52 998 564 7647</a>
               </li>
               <li className="flex items-center">
                 <MapPin size={18} className="mr-2" />

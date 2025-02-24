@@ -1,16 +1,3 @@
-/*
- ⚡MAKE SURE TO SUBSCRIBE PROGRAMMER CLOUD⚡
-*/
-
-/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
-body {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  min-height: 100vh;
-  font-family: "Poppins", sans-serif;
-} */
 
 ul {
   list-style-type: none;
@@ -34,11 +21,23 @@ a {
 
 
 
-.user__profile .cols__container .left__col .img__container {
+/* .user__profile .cols__container .left__col .img__container {
   position: absolute;
   top: -60px;
   left: 50%;
   transform: translatex(-50%);
+ 
+} */
+
+.left__col {
+  position: relative;
+}
+
+.user__profile .cols__container .left__col .img__container {
+  position: absolute;
+  top: -110px;
+  left: 100px;
+
  
 }
 
@@ -77,40 +76,42 @@ a {
      
 
 
-.user__profile .cols__container .left__col {
+/* .user__profile .cols__container .left__col {
   padding: 25px 20px;
   text-align: center;
   max-width: 350px;
   position: relative;
   margin: 0 auto;
-}
+} */
 
 
 
 .profile-information__container {
-  margin-top: 50px;
+  width: 90%;
+  margin: 40px auto 0 auto;
+  display: grid;
+  grid-template-columns: 250px 1fr;
 }
 
-
 .profile-information__container .name__conatiner {
-
+  margin: 10px 0;
 }
 
 
 .profile-information__container .name__conatiner > .name {
-  font-size: 1rem;
-  padding: 10px;
+  font-size: 1.5rem;
+
   border-radius: 10px;
   color: var(--black-color-5);
 }
 
-.profile-information__container > .skills__contaiiner {
+.profile-information__container > .left > .skills__container {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
 }
 
-.profile-information__container > .skills__contaiiner > p {
+.profile-information__container > .left > .skills__container > p {
   padding: 5px 10px;
   background-color: rgb(244, 244, 245);
 
@@ -130,13 +131,18 @@ a {
 
 .user__profile .btn__edit_container  {
   display: flex;
-  
+  gap: 20px;
+  align-items: center;
 }
 
-.user__profile .btn__edit_container > .btn__general-purple {
-  display: flex;
-  border-radius: 5px;
+.profile-information__container > .about {
   width: 100%;
+  justify-content: end;
+}
+
+.user__profile .btn__edit_container  .btn__general-purple {
+  border-radius: 20px;
+  padding: 10px 15px;
 }
 
 
@@ -152,10 +158,26 @@ a {
   margin: 0;
 } */
 .user__profile .cols__container .left__col .about {
-  justify-content: space-between;
+  display: flex;
+  justify-content: end;
   position: relative;
-  margin: 35px 0;
+
 }
+
+.about__container {
+  display: block;
+}
+
+.user__profile .cols__container .left__col .about .options__profile {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+
+
+
+
 .user__profile .cols__container .left__col .about li {
   display: flex;
   flex-direction: column;
@@ -166,15 +188,7 @@ a {
   color: #1d1d1d;
   font-weight: 600;
 }
-.user__profile .cols__container .left__col .about:after {
-  position: absolute;
-  content: "";
-  bottom: -16px;
-  display: block;
-  background: #cccccc;
-  height: 1px;
-  width: 100%;
-}
+
 .user__profile .cols__container .content p {
   font-size: 1rem;
   color: #1d1d1d;
@@ -236,8 +250,58 @@ a {
   object-fit: cover;
 }
 
-/* Responsiveness */
+.image__portfolio {
+  width: 100%;
 
+
+}
+
+.image__portfolio .tags {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.image__portfolio .tags a {
+  display: flex;
+  background-color: var(--primary-color);
+  padding: 10px 10px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--border-radius-general);
+  transition: all 400ms;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+
+.image__portfolio .tags a svg {
+  margin-left: 10px;
+}
+
+
+.image__portfolio_container {
+  height: 400px;
+  background-color: #f5f5f5;
+  margin-top: 20px;
+}
+
+.image__portfolio_container {
+  display: grid;
+  grid-template-columns: repeat(5, 200px);
+  grid-template-rows: 200px;
+}
+
+
+.image__portfolio_container .photos {
+ background-position: center;
+ background-size: cover;
+
+}
+
+/* Responsiveness */
+/* 
 @media (min-width: 868px) {
   .user__profile .cols__container {
     max-width: 1200px;
@@ -278,6 +342,11 @@ a {
 
 
 @media screen and (max-width: 768px) {
+
+  .profile-information__container {
+    margin-top: 50px;
+  }
+  
   .user__profile .cols__container .left__col {
     padding: 10px;
     text-align: center;
@@ -285,4 +354,20 @@ a {
     position: relative;
     margin: 0 auto;
   }
-}
+} */
+
+@media screen and (max-width: 768px) {
+  .profile-information__container {
+    width: 90%;
+    margin: 40px auto 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .profile-information__container .description {
+    margin: 10px 0;;
+  }
+  
+} 
+
+

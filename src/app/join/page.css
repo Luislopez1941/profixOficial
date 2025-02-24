@@ -23,6 +23,7 @@
 .join__container .right {
     display: flex;
     align-items: center;
+    justify-content: center;
     height: 100%;
 }
 
@@ -58,7 +59,7 @@
     border-radius: 10px;
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
 }
 
 .form__join_container > .row__one {
@@ -134,8 +135,15 @@
     cursor: pointer;
 }
 
+.form__join_container .inputs__general {
+    border: 1.5px solid #dee6ee;
+    border-radius: 10px;
+    background-color: #fff;
+}
 
 @media screen and (max-width: 768px) {
+
+    
 
     .join__container .right {
         display: block;
@@ -148,6 +156,20 @@
         height: 100%;
         position: relative;
    
+    }
+
+    .form__join>.form__join_container {
+        padding: 30px 0;
+        border-radius: 10px;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .form__join_container > .row__one {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 20px;
     }
 
     .form__join-finally .container__btn .btn__create-join {
@@ -220,11 +242,7 @@
         grid-template-columns: 1fr;
     }
 
-    .form__join_container .inputs__general {
-        border: 1.5px solid #dee6ee;
-        border-radius: 10px;
-        background-color: #fff;
-    }
+ 
 
     .form__join > .form__join .btn {
         width: 100%;
