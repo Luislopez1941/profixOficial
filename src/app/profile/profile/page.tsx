@@ -70,6 +70,7 @@ const Profile = () => {
           <div className='profile-information__container'>
             <div className='left'>
               <div className="img__container">
+                <div>
                 {user?.profilePhoto ?
                   <div className='user-true' style={{ backgroundImage: `url(${user?.profilePhoto})` }}>
                   </div>
@@ -78,6 +79,7 @@ const Profile = () => {
                     <User strokeWidth={1.25} />
                   </div>
                 }
+                </div>
               </div>
               <div className='name__conatiner'>
                 <p className='name'>{user?.first_name} {user?.second_name} {user?.first_surname} {user?.second_last_name}</p>

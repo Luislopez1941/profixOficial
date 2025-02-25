@@ -103,20 +103,38 @@
     border-radius: 10px;
   }
 
-  .image__portfolio_container {
+  .image__portfolio_container-update {
     display: grid;
     grid-template-columns: repeat(5, 200px);
     grid-template-rows: 200px;
   }
 
-  .image__portfolio_container .upload__image {
+  .image__portfolio_container-update .upload__image {
     width: 200px;
     height: 200px;
     background-color: #dbdbdb;
   }
 
-  .image__portfolio_container .photos__update {
+  .image__portfolio_container-update .photos__update {
    background-position: center;
    background-size: cover;
 
   }
+
+
+
+
+
+
+
+  @media screen and (max-width: 768px) {
+    .image__portfolio_container-update {
+      display: grid;
+      grid-template-columns: repeat(3, 150px);
+      grid-template-rows: 200px;
+    }
+    
+  } 
+  
+  
+  

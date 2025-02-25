@@ -15,6 +15,8 @@ a {
   width: 100%;
   background-color: var(--white-color-3);
   min-height: calc(100px + 15vw);
+  background-position: center;
+  background-size: cover;
 }
 
 
@@ -34,14 +36,18 @@ a {
 }
 
 .user__profile .cols__container .left__col .img__container {
-  position: absolute;
-  top: -110px;
-  left: 100px;
-
- 
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.user__profile .cols__container .left__col .img__container > .user-false {
+.user__profile .cols__container .left__col .img__container > div {
+  position: absolute;
+  top: -110px;
+
+}
+
+.user__profile .cols__container .left__col .img__container  .user-false {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,7 +59,7 @@ a {
   box-shadow: 1px 3px 12px rgba(0, 0, 0, 0.18);
 }
 
-.user__profile .cols__container .left__col .img__container > .user-true {
+.user__profile .cols__container .left__col .img__container  .user-true {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,7 +73,7 @@ a {
 }
 
 
-.user__profile .cols__container .left__col .img__container > .user-false svg {
+.user__profile .cols__container .left__col .img__container  .user-false svg {
     width: 50px;
     height: 50px;
     color: #818181;
@@ -367,7 +373,26 @@ a {
   .profile-information__container .description {
     margin: 10px 0;;
   }
+
+  .btn__edit_container {
+    justify-content: space-between;
+  }
+
+  .user__profile .cols__container .left__col .about {
+    width: 100%;
+    justify-content: flex-start;
+    margin: 20px 0;
+  }
   
+  .about__container {
+    width: 100%;
+  }
+
+  .image__portfolio_container {
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: 200px;
+}
 } 
 
 
