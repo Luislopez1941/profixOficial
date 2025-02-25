@@ -1,5 +1,7 @@
 .profile {
   height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
 .profile__container {
@@ -8,6 +10,7 @@
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
   height: 100%;
+  padding-bottom: 70px;
 }
 
 .profile > .profile__container .row__one {
@@ -57,4 +60,5 @@
   padding: 10px;
   width: 100%;
   border-radius: 5px;
+ 
 }
