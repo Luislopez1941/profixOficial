@@ -9,7 +9,7 @@ interface ApiResponse<T> {
 class ApiService {
   private axiosInstance: AxiosInstance;
 
-  constructor(baseURL: string = 'http://localhost:4000/api/') {
+  constructor(baseURL: string = 'https://back-proservicios-production.up.railway.app/api/') {
     this.axiosInstance = axios.create({
       baseURL,
       headers: {

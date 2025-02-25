@@ -27,10 +27,6 @@ const Header = () => {
     }
   }, [user])
 
-  const logout = () => {
-    updateUser({})
-    resetUser();
-  }
 
   return (
     <div className='hero'>
