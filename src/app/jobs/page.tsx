@@ -8,7 +8,7 @@ import JobsComponent from '@/components/Jobs/Jobs'
 
 const Jobs = () => {
   return (
-    <div >
+    <div className='job__main'>
       <Header />
       <Menu />
       <JobsComponent />

@@ -11,8 +11,7 @@ import { div } from 'framer-motion/client';
 
 const Header = () => {
   const userState = useUserStore(state => state.user);
-  const { updateUser } = useUserStore();
-  const resetUser = useUserStore(state => state.resetUser);
+
   const user = userState;
   const [toggle, setToggle] = useState<boolean>(false)
 

@@ -1,9 +1,14 @@
 .jobs {
     width: 90%;
     margin: 0 auto;
+    display: grid;
+    grid-template-rows: auto auto auto 1fr;
+    height: 100%;
+    overflow: hidden;
+    padding-bottom: 80px;
 }
 
-.jobs .options {
+.jobs > .options {
     display: flex;
     overflow-x: auto; /* Habilita el scroll horizontal */
     white-space: nowrap; /* Evita el salto de línea */
@@ -22,14 +27,19 @@
     padding: 5px;
     background-color: var(--primary-color);
     color: #fff;
-    border-radius: 5px;
-    
+    border-radius: 5px;   
+}
+
+.jobs > .row__three {
+    display: flex;
+    justify-content: end;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 
 .jobs .options p {
     margin-left: 10px;
-    
 }
 
 
@@ -60,17 +70,35 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
-    grid-template-rows: 400px;
+
 }
 
 .btn__create-job {
-    background-color: var(--primary-color);
+    border: 2px solid #3F7DC0;
     padding: 10px 10px;
-    color: #fff;
-    border: none;
+    color: #3F7DC0;
     cursor: pointer;
-    border-radius: var(--border-radius-general);
     transition: all 400ms;
     border-radius: 5px;
+    background-color: transparent;
 }
 
+.jobs .cards__job {
+    overflow: auto;
+    height: 100%;
+    transition-delay: 0.0s;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--primary-color);
+        border-radius: 5px;
+        height: 100px;
+    }
+
+    &::-webkit-scrollbar-track {
+        
+    }
+}

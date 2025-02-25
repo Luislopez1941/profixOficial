@@ -3,10 +3,12 @@ import jobs from './CardJobs.json'
 import CardJobs from './CardJobs'
 import './styles/Jobs.css'
 import { Wrench, Zap, Search, ChevronDown, Magnet } from 'lucide-react';
+import { storeJobs } from '@/zustand/Jobs';
+import ModalJob from './modalJob/ModalJob';
 
 const Jobs = () => {
 
-
+const setModal = storeJobs(state => state.setModal)
     console.log(jobs)
 
     return (
@@ -33,14 +35,15 @@ const Jobs = () => {
                     <p>Cerrajería</p>
                 </div>
             </div>
-            <div>
-                <button className='btn__create-job'>Publicar un trabajo</button>
+            <div className='row__three'>
+                <button className='btn__create-job' onClick={() => setModal('create-new_job')}>Publicar un trabajo</button>
             </div>
             <div className='cards__job'>
                 {jobs.jobs.map((x: any) => (
                     <CardJobs job={x} />
                 ))}
             </div>
+            <ModalJob />
         </div>
     )
 }
