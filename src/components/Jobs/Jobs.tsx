@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react'
 import jobs from './CardJobs.json'
 import CardJobs from './CardJobs'
 import './styles/Jobs.css'
-import { Wrench, Zap, Search, MapPin, ChevronDown, Magnet } from 'lucide-react';
+import {Search} from 'lucide-react';
 import { storeJobs } from '@/zustand/Jobs';
 import ModalJob from './modalJob/ModalJob';
 import APIs from '@/services/APIS';
-import { div } from 'framer-motion/client';
 
 interface Skills {
     id: number,
@@ -19,8 +18,7 @@ const Jobs = () => {
 
     const fetch = async () => {
         try {
-            let response = await APIs.getJobs(skills, 0, 0)
-            // setSkills(response)
+      
         } catch (error) {
 
         }
@@ -70,7 +68,7 @@ const Jobs = () => {
 
     const search = async () => {
         try {
-            let response = await APIs.getJobs(type_service, skills, id_municipality)
+            await APIs.getJobs(type_service, skills, id_municipality)
             // setSkills(response)
         } catch (error) {
 
