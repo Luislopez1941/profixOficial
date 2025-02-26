@@ -115,6 +115,32 @@ const APIs = {
         return ConfigurationAPIs.get(path);
     },
 
+    searchMunicipalities: async () => {
+        const path = `municipalities/search`;
+        return ConfigurationAPIs.get(path);
+    },
+
+
+
+
+
+    ////////////////////////////JOB//////////////////////////////////
+
+    createJob: async (data: any) => {
+        const path = `create-job`;
+        return ConfigurationAPIs.post(path, data);
+    },
+
+    getJobs: async ( type_service: number, skills: any[], id_municipality: number) => {
+        const path = `jobs/filter`;
+    
+        // Enviar los datos dentro de un objeto en el body
+        return ConfigurationAPIs.post(path, { skills, id_municipality, type_service });
+    },
+    
+
+
+
   
     
 

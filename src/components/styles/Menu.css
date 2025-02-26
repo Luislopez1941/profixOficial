@@ -1,4 +1,5 @@
 .manu__main {
+    display: none;
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -22,3 +23,10 @@
     color: #3F7DC0;
 
 }
+
+@media screen and (max-width: 768px) {
+    .manu__main {
+        display: block;
+    }
+}
+

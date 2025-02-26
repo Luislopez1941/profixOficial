@@ -10,6 +10,7 @@ import { useStore } from 'zustand';
 import { storeGlobal } from '@/zustand/GlobalVariations';
 
 
+
 interface State {
     id: number;
     name: string;

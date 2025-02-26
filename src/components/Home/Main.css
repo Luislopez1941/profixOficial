@@ -137,7 +137,7 @@
 }
 
 .main > .row__two > div > .left {
-    background-image: url('../../assets/general/pexels-maltelu-2244746.jpg');
+    background-image: url('../../assets/general/background.jpg');
     background-position: center;
     background-size: cover;
     border-radius: 10px 0 0 10px;
@@ -631,7 +631,7 @@
         align-items: center;
         justify-content: center;
         
-        background-image: linear-gradient(rgba(0, 0, 0, 0.315), rgba(0, 0, 0, 0.336)), url('../../assets/general/pexels-maltelu-2244746.jpg');
+        background-image: linear-gradient(rgba(0, 0, 0, 0.315), rgba(0, 0, 0, 0.336)), url('../../assets/general/background.jpg');
         background-position: center;
         background-size: cover;
         border-radius: 10px;

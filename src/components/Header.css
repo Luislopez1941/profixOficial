@@ -28,6 +28,11 @@
     font-weight: 700;
     color: var(--primary-color);
   }
+
+  .title.response {
+    display: none;
+  }
+  
   
   /* Navigation styles */
   .nav__hero {
@@ -162,6 +167,46 @@
   .login__hero .icon__user {
     display: flex;
   }
+
+  
+  .hero__left {
+    display: flex;
+  }
+
+  .hero__left .header__options {
+    margin-left: 50px;
+  }
+  
+
+  .header__options {
+    display: flex;
+    gap: 20px;
+  }
+
+  .header__options > a {
+    display: flex;
+    align-items: center;
+    /* background-color: rgba(63, 125, 192, 0.1); */
+    color: var(--primary-color);
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 7px;
+    text-decoration: none;
+    transition: background-color 0.5s ease;
+
+  }
+
+  .header__options > a:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transition: background-color 0.5s ease;
+
+  }
+
+  .header__options > a > svg {
+    margin-right: 10px;
+  }
+
   
 /*================Nav Modal=====================*/
 
@@ -254,6 +299,12 @@
   
   /* Responsive styles */
   @media screen and (max-width: 768px) {
+    .title.desk {
+      display: none;
+    }
+    .title.response {
+      display: flex;
+    }
     .hero__container .title {
    
     }
@@ -286,7 +337,9 @@
     }
 
   
-    
+    .header__options {
+      display: none;
+    }
   
     .nav__hero_container {
       padding: 20px;

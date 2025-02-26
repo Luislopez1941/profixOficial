@@ -6,11 +6,9 @@ import APIs from '@/services/APIS';
 import Swal from 'sweetalert2'
 
 interface FormData {
-    first_name: string;
-    first_surname: string;
-    phone: string;
-    email: string;
-    password: string;
+    job_title: string;
+    job_description: string;
+    skills: any;
     id_state: number | null;
     id_city: number | null;
     id_municipality: number | null;
@@ -68,12 +66,10 @@ const ModalJob = () => {
         setModal('')
     }
 
-    const [formData, setFormData] = useState<FormData>({
-        first_name: '',
-        first_surname: '',
-        phone: '',
-        email: '',
-        password: '',
+    const [formData, setFormData] = useState<any>({
+        job_title: '',
+        job_description: '',
+        skills: [],
         id_state: null,
         id_city: null,
         id_municipality: null
@@ -106,7 +102,7 @@ const ModalJob = () => {
     };
 
     const handleStateChange = async (state: State) => {
-        setFormData((prevFormData) => ({
+        setFormData((prevFormData: any) => ({
             ...prevFormData,
             id_state: state.id
         }));
@@ -126,7 +122,7 @@ const ModalJob = () => {
     };
 
     const handleCityChange = async (city: City) => {
-        setFormData((prevFormData) => ({
+        setFormData((prevFormData: any) => ({
             ...prevFormData,
             id_city: city.id
         }));
@@ -146,7 +142,7 @@ const ModalJob = () => {
     };
 
     const handleMunicipalityChange = (municipality: Municipality) => {
-        setFormData((prevFormData) => ({
+        setFormData((prevFormData: any) => ({
             ...prevFormData,
             id_municipality: municipality.id
         }));
@@ -159,7 +155,7 @@ const ModalJob = () => {
     };
 
     const handleCompaniesChange = async (state: State) => {
-        setFormData((prevFormData) => ({
+        setFormData((prevFormData: any) => ({
             ...prevFormData,
             id_state: state.id
         }));
@@ -178,34 +174,49 @@ const ModalJob = () => {
         setSelectServices(false); // Cerrar el select al seleccionar un servicio
     };
 
-    const [skills, setSkills] = useState<Skills[]>([]);
-
+   
     const handleAddSkill = () => {
         if (selectedServices) {  // Aseguramos que selectedServices no sea undefined
-            let find = skills.find((x: { id: number }) => x.id == selectedServices.id);
+            // Buscar si ya existe un skill con el mismo id en formData.skills
+            let find = formData.skills.find((x: { id: number }) => x.id == selectedServices.id);
+            
+            // Solo agregamos si no existe
             if (!find) {
-                setSkills([...skills, selectedServices]);  // Solo si selectedServices está definido
-                setSelectedServices(undefined);
+                setFormData({
+                    ...formData,
+                    skills: [...formData.skills, selectedServices]  // Solo actualizamos la propiedad 'skills'
+                });
+                setSelectedServices(undefined);  // Limpiar la selección después de agregar
+            } else {
+                console.log('Skill already added');
             }
         } else {
             console.log('selectedServices is undefined');
         }
     };
-
-
+    
     const handleRemoveSkill = (index: number) => {
-        setSkills(skills.filter((_, i) => i !== index));
+        // Eliminamos el skill en el índice dado de formData.skills
+        setFormData({
+            ...formData,
+            skills: formData.skills.filter((_: any, i: any) => i !== index)  // Filtramos la lista de skills
+        });
+    };
+    const create = async () => {
+        try {
+            let response = await APIs.createJob(formData)
+            Swal.fire({
+                title: "Exito",
+                text: "Trabajo creada exitosamente",
+                icon: "success"
+            });
+            setModal('')
+        } catch (error) {
+
+        }
     }
 
-    const create = () => {
-        Swal.fire({
-            title: "Exito",
-            text: "Trabajo creada exitosamente",
-            icon: "success"
-          });
 
-        setModal('')
-    }
 
     return (
         <div className={`overlay__modal_job ${modal == 'create-new_job' ? 'active' : ''}`}>
@@ -220,17 +231,35 @@ const ModalJob = () => {
                 </div>
                 <div className='new__job_modal'>
                     <div className='new__job_modal_form'>
-                        <div>
-                            <label>Titulo del trabajo</label>
-                            <input className='inputs__general' type="text" />
-                        </div>
-                        <div>
-                            <label>Descripcion del trabajo</label>
-                            <input className='inputs__general' type="text" />
+                        <div className='row__one'>
+                            <div>
+                                <label>Título del trabajo</label>
+                                <input
+                                    className="inputs__general"
+                                    placeholder="Título del trabajo"
+                                    value={formData.job_title}
+                                    onChange={(e) =>
+                                        setFormData({ ...formData, job_title: e.target.value })
+                                    }
+                                    type="text"
+                                />
+                            </div>
+                            <div>
+                                <label>Descripción del trabajo</label>
+                                <input
+                                    className="inputs__general"
+                                    placeholder="Descripción del trabajo"
+                                    value={formData.job_description}
+                                    onChange={(e) =>
+                                        setFormData({ ...formData, job_description: e.target.value })
+                                    }
+                                    type="text"
+                                />
+                            </div>
                         </div>
                         <div className='add'>
-                            <label>¿Este trabajo es para?</label>
                             <div className='select__container'>
+                                <label>¿Este trabajo es para?</label>
                                 <div className='select-btn__general'>
                                     <div className={`select-btn ${selectServices ? 'active' : ''}`} onClick={openSelectServices}>
                                         <div>
@@ -255,74 +284,82 @@ const ModalJob = () => {
                                 Agregar
                             </button>
                         </div>
-                        <div className="skills-add">
-                            {skills?.map((skill: Skills, index: number) => (
-                                <div>
-                                    <div key={index} className="skill-item">
-                                        <span>{skill.name}</span>
-                                        <div onClick={() => handleRemoveSkill(index)} className="remove-skill-button">X</div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                        <p>Selecciona la ubicacion del trabajo</p>
-                        <div className='select__container'>
-                            <div className='select-btn__general'>
-                                <div className={`select-btn ${selectState ? 'active' : ''}`} onClick={openSelectStore}>
-                                    <MapPin strokeWidth={1.5} />
+                        {formData.skills.length > 0 ?
+                            <div className="skills-add">
+                                {formData.skills?.map((skill: Skills, index: number) => (
                                     <div>
-                                        <p>{formData.id_state ? states.find((s) => s.id === formData.id_state)?.name : 'Estado'}</p>
-                                        <svg className='chevron__down' fill='#6c6c6e' xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" /></svg>
+                                        <div key={index} className="skill-item">
+                                            <span>{skill.name}</span>
+                                            <div onClick={() => handleRemoveSkill(index)} className="remove-skill-button">x</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className={`content ${selectState ? 'active' : ''}`}>
-                                    <ul className={`options ${selectState ? 'active' : ''}`} style={{ opacity: selectState ? '1' : '0' }}>
-                                        {states?.map((state) => (
-                                            <li key={state.id} onClick={() => handleCompaniesChange(state)}>
-                                                {state.name}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
+                                ))}
                             </div>
-                        </div>
-                        <div className='select__container my-4'>
-                            <div className='select-btn__general'>
-                                <div className={`select-btn ${selectCity ? 'active' : ''}`} onClick={openSelectCity}>
-                                    <MapPin strokeWidth={1.5} />
-                                    <div>
-                                        <p>{formData.id_city ? cities.find((s) => s.id === formData.id_city)?.name : 'Ciudad'}</p>
-                                        <svg className='chevron__down' fill='#6c6c6e' xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" /></svg>
+                            :
+                            ''
+                        }
+                        <div className='filter__locations'>
+                            <p>Selecciona la ubicacion del trabajo</p>
+                            <div className='row__one'>
+                                <div className='select__container'>
+                                    <div className='select-btn__general'>
+                                        <div className={`select-btn ${selectState ? 'active' : ''}`} onClick={openSelectStore}>
+                                            <MapPin strokeWidth={1.5} />
+                                            <div>
+                                                <p>{formData.id_state ? states.find((s) => s.id === formData.id_state)?.name : 'Estado'}</p>
+                                                <svg className='chevron__down' fill='#6c6c6e' xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" /></svg>
+                                            </div>
+                                        </div>
+                                        <div className={`content ${selectState ? 'active' : ''}`}>
+                                            <ul className={`options ${selectState ? 'active' : ''}`} style={{ opacity: selectState ? '1' : '0' }}>
+                                                {states?.map((state) => (
+                                                    <li key={state.id} onClick={() => handleCompaniesChange(state)}>
+                                                        {state.name}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className={`content ${selectCity ? 'active' : ''}`}>
-                                    <ul className={`options ${selectCity ? 'active' : ''}`} style={{ opacity: selectCity ? '1' : '0' }}>
-                                        {cities?.map((city) => (
-                                            <li key={city.id} onClick={() => handleCityChange(city)}>
-                                                {city.name}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='select__container'>
-                            <div className='select-btn__general'>
-                                <div className={`select-btn ${selectMunicipality ? 'active' : ''}`} onClick={openSelectMunicipality}>
-                                    <MapPin strokeWidth={1.5} />
-                                    <div>
-                                        <p>{formData.id_municipality ? municipalities?.find((s) => s.id === formData.id_municipality)?.name : 'Municipio'}</p>
-                                        <svg className='chevron__down' fill='#6c6c6e' xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" /></svg>
+                                <div className='select__container my-4'>
+                                    <div className='select-btn__general'>
+                                        <div className={`select-btn ${selectCity ? 'active' : ''}`} onClick={openSelectCity}>
+                                            <MapPin strokeWidth={1.5} />
+                                            <div>
+                                                <p>{formData.id_city ? cities.find((s) => s.id === formData.id_city)?.name : 'Ciudad'}</p>
+                                                <svg className='chevron__down' fill='#6c6c6e' xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" /></svg>
+                                            </div>
+                                        </div>
+                                        <div className={`content ${selectCity ? 'active' : ''}`}>
+                                            <ul className={`options ${selectCity ? 'active' : ''}`} style={{ opacity: selectCity ? '1' : '0' }}>
+                                                {cities?.map((city) => (
+                                                    <li key={city.id} onClick={() => handleCityChange(city)}>
+                                                        {city.name}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className={`content ${selectMunicipality ? 'active' : ''}`}>
-                                    <ul className={`options ${selectMunicipality ? 'active' : ''}`} style={{ opacity: selectMunicipality ? '1' : '0' }}>
-                                        {municipalities?.map((municipality) => (
-                                            <li key={municipality.id} onClick={() => handleMunicipalityChange(municipality)}>
-                                                {municipality.name}
-                                            </li>
-                                        ))}
-                                    </ul>
+                                <div className='select__container'>
+                                    <div className='select-btn__general'>
+                                        <div className={`select-btn ${selectMunicipality ? 'active' : ''}`} onClick={openSelectMunicipality}>
+                                            <MapPin strokeWidth={1.5} />
+                                            <div>
+                                                <p>{formData.id_municipality ? municipalities?.find((s) => s.id === formData.id_municipality)?.name : 'Municipio'}</p>
+                                                <svg className='chevron__down' fill='#6c6c6e' xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" /></svg>
+                                            </div>
+                                        </div>
+                                        <div className={`content ${selectMunicipality ? 'active' : ''}`}>
+                                            <ul className={`options ${selectMunicipality ? 'active' : ''}`} style={{ opacity: selectMunicipality ? '1' : '0' }}>
+                                                {municipalities?.map((municipality) => (
+                                                    <li key={municipality.id} onClick={() => handleMunicipalityChange(municipality)}>
+                                                        {municipality.name}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

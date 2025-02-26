@@ -8,33 +8,63 @@
     padding-bottom: 80px;
 }
 
+.jobs > .filter {
+    display: flex;
+}
+
 .jobs > .options {
     display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    
+}
+
+
+.jobs > .options .row__one {
+    display: flex;
+    width: min-content;
     overflow-x: auto; /* Habilita el scroll horizontal */
     white-space: nowrap; /* Evita el salto de línea */
     gap: 10px; /* Espacio entre elementos (ajústalo según necesites) */
-    padding: 10px; /* Añade un poco de padding para mejor apariencia */
+    padding: 10px 0; /* Añade un poco de padding para mejor apariencia */
     overflow: auto;
     -webkit-overflow-scrolling: touch; /* mejora el comportamiento del scroll en dispositivos táctiles de Apple */
     scrollbar-width: none;
 }
 
 
-.jobs .options > div {
+.jobs .options > .row__one div {
     display: flex;
     align-items: center;
     margin-right: 10px;
     padding: 5px;
-    background-color: var(--primary-color);
-    color: #fff;
+    background-color: rgba(63, 125, 192, 0.1);
+    color: var(--primary-color);
     border-radius: 5px;   
 }
 
+.jobs .options > .row__one div svg {
+
+    color: var(--primary-color);
+ 
+}
+
 .jobs > .row__three {
-    display: flex;
+    display: none;
     justify-content: end;
     margin-top: 10px;
     margin-bottom: 20px;
+}
+
+.jobs > .row__three .btn__create-job {
+
+    border: 2px solid #3F7DC0;
+    padding: 5px 10px;
+    color: #3F7DC0;
+    cursor: pointer;
+    transition: all 400ms;
+    border-radius: 5px;
+    background-color: transparent;
 }
 
 
@@ -42,29 +72,161 @@
     margin-left: 10px;
 }
 
+.jobs .options > .row__three .btn__create-job {
+    border: 2px solid #3F7DC0;
+    padding: 5px 10px;
+    color: #3F7DC0;
+    cursor: pointer;
+    transition: all 400ms;
+    border-radius: 5px;
+    background-color: transparent;
+}
 
 .jobs .search {
     display: flex;
-    align-items: center;
+   
 }
 
-.jobs .search .inputs__general {
+.jobs .search .container__inputs {
+    display: flex;
+    align-items: center;
     border: 2px solid #f3f3f3;
+    height: 45px;
+    border-radius: 50px;
+}
+
+.jobs .search .input {
+   display: flex;
+   align-items: center;
+}
+
+
+.jobs .search .input.two {
+    display: flex;
+    border-left: 2px solid #f3f3f3;
+    position: relative;
+ }
+ .jobs .search .input  svg {
+    color: #c0c0c0;
+    margin-left: 15px;
+ }
+ .jobs .search .input.two svg {
+    margin-left: 10px;
+ }
+
+ .container__result_localities {
+    position: absolute;
+    top: 40px;
+    height: 0;
+    z-index: 1;
+    transition: all 300ms;
+ }
+
+ .container__result_localities.active {
+    position: absolute;
+    width: 100%;
+    background-color: #ffffff;
+    height: 300px;
+   
+ }
+
+ .container__result_localities {
+    display: block;
+    padding: 10px 20px;
+    overflow: auto;
+    transition-delay: 0.0s;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #bf6903;
+        border-radius: 5px;
+        height: 100px;
+    }
+
+    &::-webkit-scrollbar-track {
+        /* Para modificar el background */
+    }
+   
+
+ }
+
+ .container__result_localities > p {
+    margin: 20px 0;
+    cursor: pointer;
+    
+ }
+
+
+ 
+
+.jobs .search .input > .input_container {
+    display: flex;
+    align-items: center;
+ }
+
+
+
+ .jobs .filter__service {
+    
+ }
+
+ .jobs .filter__service .input {
+    display: flex;
+    align-items: center;
+    border: 2px solid #f3f3f3;
+    height: 40px;
+    border-radius: 50px;
+ }
+
+ .jobs .filter__service .input .inputs__general {
+    height: 30px;
     margin-top: 0;
     margin-right: 10px;
-    height: 40px;
+    border-radius: 50px;
+ }
+ 
+ 
+
+.jobs .search .inputs__general {
+    height: 30px;
+    margin-top: 0;
+    margin-right: 10px;
+   
   }
 
  .jobs .btn_search {
     height: 40px;
-    width: 40px;
+    width: 50px;
     background-color: var(--primary-color);
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 5px;
+    border-radius: 0 50px 50px 0;
   }
+
+
+  .filter__select {
+    display: flex;
+    margin-left: 20px;
+  }
+
+
+  .filter__select .select-btn__general {
+    margin-top: 0;
+  }
+
+  .filter__select .select-btn__general .select-btn {
+    border-radius: 50px;
+    min-width: 200px;
+  }
+
+
+  
+
 
 .cards__job {
     display: grid;
@@ -73,9 +235,11 @@
 
 }
 
-.btn__create-job {
+
+
+.jobs .options > .row__two  .btn__create-job {
     border: 2px solid #3F7DC0;
-    padding: 10px 10px;
+    padding: 5px 10px;
     color: #3F7DC0;
     cursor: pointer;
     transition: all 400ms;
@@ -100,5 +264,34 @@
 
     &::-webkit-scrollbar-track {
         
+    }
+}
+
+@media screen and (max-width: 768px)  {
+    .jobs .filter  {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        grid-template-rows: 1fr;
+        gap: 20px;
+        
+    }
+
+    .jobs > .options {
+        display: flex;
+        justify-content: space-between;
+        overflow: auto;
+    }
+
+    .filter__select {
+        margin-left: 0px;
+      }
+    
+    
+    .jobs > .row__three {
+        display: flex;
+    }
+
+    .jobs .options > .row__two .btn__create-job {
+        display: none;
     }
 }
