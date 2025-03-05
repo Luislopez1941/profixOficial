@@ -8,8 +8,8 @@ const CardJobs = ({job}: any) => {
         
       </div> */}
       <div className='content'>
-        <p className='title'>{job.jobTitle}</p>
-        <p className='description'>{job.jobDescription}</p>
+        <p className='title'>{job.job_description}</p>
+        <p className='description'>{job.job_description}</p>
       </div>
       <div className='skills'>
         <div>

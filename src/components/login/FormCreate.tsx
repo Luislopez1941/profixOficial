@@ -80,7 +80,7 @@ const FormCreate: React.FC = () => {
                     <input
                         className='inputs__general'
                         type="text"
-                        name="phoneNumber"
+                        name="phone"
                         placeholder="Numero telefonico"
                         value={formData.phone}
                         onChange={handleChange}

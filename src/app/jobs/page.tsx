@@ -7,7 +7,13 @@ import Header from '@/components/Header'
 import JobsComponent from '@/components/Jobs/Jobs'
 import { AnimatePresence, motion } from "framer-motion";
 
+
+
 const Jobs = () => {
+  // const userState = useUserStore(state => state.user);
+  // const userGlobal: UserInfo = userState;
+
+
   return (
     <AnimatePresence>
       <motion.div

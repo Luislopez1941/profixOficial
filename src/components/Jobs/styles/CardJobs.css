@@ -2,6 +2,8 @@
     border: 2px solid #ececec;
     border-radius: 10px;
     padding: 20px 20px;
+    height: min-content;
+
 }
 
 /* .card__jobs > .image_jobs {

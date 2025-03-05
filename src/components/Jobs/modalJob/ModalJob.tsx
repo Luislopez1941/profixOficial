@@ -4,6 +4,7 @@ import './ModalJob.css'
 import { Search, MapPin } from 'lucide-react';
 import APIs from '@/services/APIS';
 import Swal from 'sweetalert2'
+import useUserStore from '@/zustand/UserStore';
 
 interface FormData {
     job_title: string;
@@ -13,6 +14,16 @@ interface FormData {
     id_city: number | null;
     id_municipality: number | null;
 }
+
+interface UserInfo {
+    id: number;
+    name: string;
+    email: string;
+    typeUser: string;
+    token: string;
+
+};
+
 
 interface State {
     id: number;
@@ -42,7 +53,8 @@ interface Skill {
 }
 
 const ModalJob = () => {
-
+    const userState = useUserStore(state => state.user);
+    const userGlobal: UserInfo = userState;
 
     const services = [
         { id: 1, name: 'Plomero' },
@@ -66,7 +78,10 @@ const ModalJob = () => {
         setModal('')
     }
 
+    console.log(userGlobal)
+
     const [formData, setFormData] = useState<any>({
+        id_user: userGlobal.id,
         job_title: '',
         job_description: '',
         skills: [],

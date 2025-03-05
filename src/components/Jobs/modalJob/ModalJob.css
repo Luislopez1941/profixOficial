@@ -184,3 +184,21 @@
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 }
+
+
+@media screen and (max-width: 768px) {
+	.popup__modal_job {
+	
+		width: 95vw;
+		max-width: 95vh;
+	
+	}
+
+	.new__job_modal_form .row__one {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+	
+	
+}
