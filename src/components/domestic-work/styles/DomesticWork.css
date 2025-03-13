@@ -1,0 +1,362 @@
+.domestic__work {
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: auto auto auto 1fr;
+    height: 100%;
+    overflow: hidden;
+    padding-bottom: 80px;
+}
+
+.domestic__work > .filter {
+    display: flex;
+}
+
+.domestic__work > .options {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    
+}
+
+
+.domestic__work > .options .row__one {
+    display: flex;
+    width: min-content;
+    overflow-x: auto; /* Habilita el scroll horizontal */
+    white-space: nowrap; /* Evita el salto de línea */
+    gap: 10px; /* Espacio entre elementos (ajústalo según necesites) */
+    padding: 10px 0; /* Añade un poco de padding para mejor apariencia */
+    overflow: auto;
+    -webkit-overflow-scrolling: touch; /* mejora el comportamiento del scroll en dispositivos táctiles de Apple */
+    scrollbar-width: none;
+}
+
+
+.domestic__work .options > .row__one div {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    height: 40px;
+    padding: 0 10px;
+    background-color: rgba(63, 125, 192, 0.1);
+    color: var(--primary-color);
+    border-radius: 5px;   
+}
+
+.domestic__work .options > .row__one div svg {
+
+    color: var(--primary-color);
+ 
+}
+
+.domestic__work > .row__three {
+    display: none;
+    justify-content: end;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.domestic__work > .row__three .btn__create-job {
+
+    border: 2px solid #3F7DC0;
+    height: 40px;
+    padding: 5px 10px;
+    color: #3F7DC0;
+    cursor: pointer;
+    transition: all 400ms;
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+
+.domestic__work .options p {
+    margin-left: 10px;
+}
+
+.domestic__work .options > .row__three .btn__create-job {
+    border: 2px solid #3F7DC0;
+    padding: 5px 10px;
+    color: #3F7DC0;
+    cursor: pointer;
+    transition: all 400ms;
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+.domestic__work .search {
+    display: flex;
+   
+}
+
+.search .container__inputs .input_container_main.localities {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+   
+}
+
+.search .container__inputs .input_container_main.localities .input {
+    margin-top: 20px;
+}
+
+.search .container__inputs .options__localities_container {
+    display: flex;
+    gap: 10px;
+}
+
+.search .container__inputs .options__localities_container svg {
+
+    color: #c0c0c0;
+}
+
+
+
+
+.domestic__work .search .container__inputs {
+    display: flex;
+    align-items: center;
+    border: 2px solid #f3f3f3;
+    height: 45px;
+    border-radius: 50px;
+}
+
+.domestic__work .search .input {
+   display: flex;
+   align-items: center;
+}
+
+
+
+.domestic__work .search .input.two {
+    display: flex;
+    border-left: 2px solid #f3f3f3;
+    position: relative;
+ }
+
+
+
+ .domestic__work .search .input .input_container svg {
+    color: #c0c0c0;
+    margin-left: 15px;
+ }
+ .domestic__work .search .input.two .input_container svg {
+    margin-left: 10px;
+ }
+
+ .container__result_localities {
+    position: absolute;
+    top: 40px;
+    z-index: 1;
+    transition: all 300ms;
+    display: none;
+   
+ }
+
+ .container__result_localities.active {
+    position: absolute;
+    display: grid;
+    grid-template-rows: 1fr;
+    gap: 20px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #8d8d8d;
+    
+   
+ }
+
+ .container__result_localities {
+
+    padding: 10px 10px;
+    overflow: auto;
+    transition-delay: 0.0s;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #bf6903;
+        border-radius: 5px;
+        height: 100px;
+    }
+
+    &::-webkit-scrollbar-track {
+        /* Para modificar el background */
+    }
+   
+
+ }
+
+ .container__result_localities > p {
+    margin: 20px 0;
+    cursor: pointer;
+    
+ }
+
+
+ 
+
+.domestic__work .search .input > .input_container {
+    display: flex;
+    align-items: center;
+ }
+
+
+
+ .domestic__work .filter__service {
+    
+ }
+
+ .domestic__work .filter__service .input {
+    display: flex;
+    align-items: center;
+    border: 2px solid #f3f3f3;
+    height: 40px;
+    border-radius: 50px;
+ }
+
+ .domestic__work .filter__service .input .inputs__general {
+    height: 30px;
+    margin-top: 0;
+    margin-right: 10px;
+    border-radius: 50px;
+ }
+ 
+ 
+
+.domestic__work .search .inputs__general {
+    height: 30px;
+    margin-top: 0;
+    margin-right: 10px;
+   
+  }
+
+ .domestic__work .btn_search {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+
+  .domestic__work .btn_search > .text {
+    display: none;
+  }
+  
+
+  .domestic__work .btn_search .icon {
+    transform: rotate(90deg);
+    margin-left: 10px;
+
+  }
+
+
+  .filter__select {
+    display: flex;
+    margin-left: 10px;
+  }
+
+
+  .filter__select .select-btn__general {
+    margin-top: 0;
+  }
+
+  .filter__select .select-btn__general .select-btn {
+    border-radius: 50px;
+    min-width: 200px;
+  }
+
+
+  
+
+
+.cards__job {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+
+}
+
+
+
+.domestic__work .options > .row__two  .btn__create-job {
+    border: 2px solid #3F7DC0;
+    padding: 5px 10px;
+    color: #3F7DC0;
+    cursor: pointer;
+    transition: all 400ms;
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+.domestic__work .cards__job {
+    overflow: auto;
+    height: 100%;
+    transition-delay: 0.0s;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--primary-color);
+        border-radius: 5px;
+        height: 100px;
+    }
+
+    &::-webkit-scrollbar-track {
+        
+    }
+}
+
+@media screen and (max-width: 768px)  {
+    .domestic__work .filter  {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        grid-template-rows: 1fr;
+        gap: 20px;
+        
+    }
+
+    .domestic__work .btn_search > .text {
+        display: block;
+    }
+
+    .domestic__work .btn_search {
+        height: 40px;
+        width: 100%;
+        border-radius: 50px;
+        justify-content: center;
+        margin-left: 0;
+    }
+      
+
+    .domestic__work > .options {
+        display: flex;
+        justify-content: space-between;
+        overflow: auto;
+    }
+
+    .filter__select {
+        margin-left: 0px;
+    }
+      
+    
+    
+    .domestic__work > .row__three {
+        display: flex;
+    }
+
+    .domestic__work .options > .row__two .btn__create-job {
+        display: none;
+    }
+}

@@ -41,6 +41,8 @@ const Profile = () => {
     const userState = useUserStore(state => state.user);
     const userGlobal: UserInfo = userState;
 
+    console.log('userGlobal', userGlobal)
+
     const { updateUser } = useUserStore();
     const resetUser = useUserStore(state => state.resetUser);
 
@@ -61,14 +63,15 @@ const Profile = () => {
 
     }, [])
 
-    console.log(user)
+    console.log('userGlobal', user)
+    console.log('userGlobal', userGlobal)
 
     const logout = () => {
         updateUser({})
         resetUser();
     }
 
-    console.log('userGlobal', userGlobal)
+    
 
 
     return (

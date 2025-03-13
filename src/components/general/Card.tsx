@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles/Card.css';
-import Link from 'next/link';
-
+import { useRouter } from 'next/navigation'
+import { storeWorkers } from '@/zustand/Workers';
 
 interface Skill {
     name: string;
@@ -34,7 +34,17 @@ interface CardProps {
 }
 
 
-const Card: React.FC<CardProps> = ({ item, route }) => {
+const Card: React.FC<CardProps> = ({ item, route }: any) => {
+
+     const setDtaUser = storeWorkers(state => state.setDtaUser)
+    
+
+     const router = useRouter();
+
+    const seeProfile = () => {
+        setDtaUser(item)
+        router.push(route);
+    }
 
     return (
         <div className='card'>
@@ -75,8 +85,8 @@ const Card: React.FC<CardProps> = ({ item, route }) => {
                     </div>
 
 
-                    <div className='btn'>
-                        <Link href={route}>Ver perfil</Link>
+                    <div className='btn' onClick={seeProfile}>
+                        <button>Ver perfil</button>
                     </div>
                 </div>
             </div>

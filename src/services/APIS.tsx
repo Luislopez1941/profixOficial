@@ -130,12 +130,38 @@ const APIs = {
         return ConfigurationAPIs.post(path, data);
     },
 
-    getJobs: async ( type_service: string, skills: any[], id_municipality: number) => {
+    getJobs: async ( job_title: string, skills: any[], id_municipality: number) => {
         const path = `jobs/filter`;
     
         // Enviar los datos dentro de un objeto en el body
-        return ConfigurationAPIs.post(path, { skills, id_municipality, type_service });
+        return ConfigurationAPIs.post(path, { skills, id_municipality, job_title });
     },
+    
+
+     ////////////////////////////JOB//////////////////////////////////
+
+     sendMessage: async (data: any) => {
+        const path = `send`;
+        return ConfigurationAPIs.post(path, data);
+    },
+
+    createMessage: async (data: any) => {
+        const path = 'create-massage';
+        return ConfigurationAPIs.post(path, data);
+    },
+
+    getAllChatsForUser: async (userId: number) => {
+        const path = `${userId}`;
+        // Enviar los datos dentro de un objeto en el body
+        return ConfigurationAPIs.get(path);
+    },
+
+      
+    getChatParticipant: async (chatId: number, userId: number) => {
+        const path = `get-chat/${chatId}/${userId}`;
+        return ConfigurationAPIs.get(path);
+    },
+
     
 
 

@@ -64,8 +64,8 @@ const Profile = () => {
       <div className='backgorund-profile' style={{ backgroundImage: user?.background ? `url(${user?.background})` : 'none' }}>
 
       </div>
-      <div className="cols__container">
-        <div className="left__col">
+      <div className="row__one">
+        <div className="left">
 
           <div className='profile-information__container'>
             <div className='left'>

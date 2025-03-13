@@ -296,9 +296,11 @@
   }
 
 
-  
   /* Responsive styles */
   @media screen and (max-width: 768px) {
+    .hero__container .user {
+      display: none;
+    }
     .title.desk {
       display: none;
     }

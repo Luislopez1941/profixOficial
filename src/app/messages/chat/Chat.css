@@ -1,10 +1,6 @@
 /* CSS Variables for theming */
 :root {
-    --primary-color: #3b82f6;
-    --primary-text-color: #ffffff;
-    --secondary-color: #f3f4f6;
-    --secondary-text-color: #1f2937;
-    --background-color: #f9fafb;
+  
     --sidebar-bg-color: #ffffff;
     --chat-bg-color: #f3f4f6;
     --border-color: #e5e7eb;
@@ -105,6 +101,8 @@
     align-items: center;
     justify-content: center;
     color: #6b7280;
+    background-position: center;
+    background-size: cover;
   }
   
   .status-indicator {
@@ -183,6 +181,16 @@
   .contact-details {
     margin-left: 12px;
   }
+  
+  .contact-details .container_name {
+    display: flex;
+  }
+
+    
+  .contact-details .container_name > .surname {
+    margin-left: 5px;
+  }
+
   
   .contact-details h3 {
     font-weight: 500;

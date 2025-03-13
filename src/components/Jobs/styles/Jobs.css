@@ -237,15 +237,21 @@
   }
 
  .jobs .btn_search {
+    width: 40px;
     height: 40px;
-    width: 100%;
     background-color: var(--primary-color);
     color: #fff;
     display: flex;
     align-items: center;
-    justify-content: center;
+    margin-left: 10px;
     border-radius: 50px;
+    cursor: pointer;
   }
+
+  .jobs .btn_search > .text {
+    display: none;
+  }
+  
 
   .jobs .btn_search .icon {
     transform: rotate(90deg);
@@ -256,7 +262,7 @@
 
   .filter__select {
     display: flex;
-    margin-left: 20px;
+    margin-left: 10px;
   }
 
 
@@ -318,8 +324,20 @@
         grid-template-columns: repeat(1, minmax(0, 1fr));
         grid-template-rows: 1fr;
         gap: 20px;
-        
     }
+
+    .jobs .btn_search > .text {
+        display: block;
+    }
+
+    .jobs .btn_search {
+        height: 40px;
+        width: 100%;
+        border-radius: 50px;
+        justify-content: center;
+        margin-left: 0;
+    }
+      
 
     .jobs > .options {
         display: flex;
@@ -329,7 +347,8 @@
 
     .filter__select {
         margin-left: 0px;
-      }
+    }
+      
     
     
     .jobs > .row__three {

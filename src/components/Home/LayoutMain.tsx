@@ -145,7 +145,7 @@ const LayoutMain = () => {
                                 <div>
                                     <div className='inputs__general_icons'>
                                         <Search className='icon-left' strokeWidth={1.75} />
-                                        <input className='inputs__generic' type="text" placeholder='Buscar tipo de servicio' value={typeServive} onChange={(e) => setTypeService(e.target.value)} />
+                                        <input className='inputs__generic' type="text" placeholder='Buscar profesional' value={typeServive} onChange={(e) => setTypeService(e.target.value)} />
                                     </div>
                                 </div>
                                 <div className='select__container'>

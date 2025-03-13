@@ -27,6 +27,7 @@ export async function POST(req: NextRequest) {
       token: data.token,
       id_municipality: data.data?.id_municipality || '',
       id_locality: data.id_locality,
+      
     };
 
     const serializedData = JSON.stringify(dataCookies);
