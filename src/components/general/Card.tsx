@@ -61,7 +61,7 @@ const Card: React.FC<CardProps> = ({ item, route }: any) => {
                         <p className='reviews'>Me gusta ofrecer servicios de calidad</p>
                     </div>
                     <div className='skills'>
-                        {item.skills?.map((skill, skillIndex) => (
+                        {item.skills?.map((skill: any, skillIndex: any) => (
                             <p className={skill.name} key={skillIndex}>
                                 {skill.name}
                             </p>
