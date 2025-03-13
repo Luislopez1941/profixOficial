@@ -58,6 +58,8 @@ interface UserInfo {
 
 interface UserData {
   firstName: string;
+  first_name: string;
+  first_surname: string;
   firstSurname: string;
   background: string;
   profilePhoto: string;
