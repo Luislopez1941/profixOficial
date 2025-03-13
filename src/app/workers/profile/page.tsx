@@ -47,7 +47,7 @@ const Profile = () => {
 
   const getUser = async () => {
     try {
-      let data = {
+      let data: any = {
         id: dataUser.id,
         typeUser: dataUser.type_user
       }
