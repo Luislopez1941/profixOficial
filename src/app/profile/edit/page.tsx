@@ -56,21 +56,7 @@ interface UserInfo {
 
 };
 
-interface UserData {
-  first_name: string;
-  first_surname: string;
-  firstName: string;
-  firstSurname: string;
-  background: string;
-  profilePhoto: string;
-  typeUser: string;
-  skills: []
-  phone: string;
-  email: string;
-  password: string;
 
-  description: string
-}
 
 
 const EditProfile = () => {
@@ -131,13 +117,13 @@ const EditProfile = () => {
   const userState = useUserStore(state => state.user);
   const userGlobal: UserInfo = userState;
 
-  const [user, setUser] = useState<UserData>()
+  const [user, setUser] = useState<any>()
 
   const [description, setDescription] = useState<string>()
 
   const getUser = async () => {
     try {
-      let result = await APIs.getUser(userGlobal) as UserData;
+      let result: any = await APIs.getUser(userGlobal);
 
       setUser(result);
       setDescription(result.description)
